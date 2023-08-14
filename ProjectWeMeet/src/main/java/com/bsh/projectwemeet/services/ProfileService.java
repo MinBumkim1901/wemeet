@@ -45,6 +45,9 @@ public class ProfileService {
     public ArticleEntity[] getCountCategoryByPage(String nickname) {
 
         UserEntity user = profileMapper.selectNickName(nickname);
+       if(user == null){
+           System.out.println("null");
+       }
 
         return this.profileMapper.selectCountCategoryByPage(user.getEmail());
     }

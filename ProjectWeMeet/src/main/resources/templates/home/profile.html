@@ -213,7 +213,7 @@
                 <span class="user-name" th:text="${profile?.getNickname()+'님'}"></span>
             </div>
             <div class="pencil">
-                <label class="pencil" th:if="${profile.getEmail() == session.user.getEmail()}">
+                <label class="pencil" th:if="${session.user != null && profile.getEmail() == session.user.getEmail()}">
                     <img id="setting" class="change_button"
                          th:src="@{/resources/images/profileImages/icons8-pencil-50.png}" alt="">
                 </label>
@@ -223,19 +223,10 @@
     <div class="introduce">
         <span th:text="${content.getIntroduceText()}"></span>
     </div>
-
 </form>
 
-<div class="post-container" id="not-post" th:if="${#lists.isEmpty(article)}">
-    <div class="not-article" th:if="${#lists.isEmpty(article)}">
-        <div class="not-list" >
-            게시물을 작성해주세요
-        </div>
-    </div>
-</div>
 
-
-<div class="post-container" id="postContainer" th:if="${not #lists.isEmpty(article)}">
+<div class="post-container" id="postContainer">
     <span>
         <span class="article-post">
             <span class="posts">참여한 게시물</span>
