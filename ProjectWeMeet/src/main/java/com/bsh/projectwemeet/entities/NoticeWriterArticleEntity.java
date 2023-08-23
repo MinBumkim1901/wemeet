@@ -4,6 +4,15 @@ import java.util.Date;
 import java.util.Objects;
 
 public class NoticeWriterArticleEntity {
+
+    private int index;
+    private String title;
+    private String content;
+    private Date createdAt;
+    private String clientIp;
+    private String clientUa;
+    private String nickname;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -71,10 +80,14 @@ public class NoticeWriterArticleEntity {
         return this;
     }
 
-    private int index;
-    private String title;
-    private String content;
-    private Date createdAt;
-    private String clientIp;
-    private String clientUa;
+
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public NoticeWriterArticleEntity setNickname(String nickname) {
+        this.nickname = nickname;
+        return this;
+    }
 }

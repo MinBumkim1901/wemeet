@@ -35,10 +35,11 @@ body {
 
 a {
     color: black;
+    text-decoration: none;
 }
 
 .main {
-    width: 65%;
+    width: 95%;
     margin: 0 auto;
 }
 
@@ -178,7 +179,6 @@ a {
 
 #mainContainer > .left-profile > .text-box > .user-name {
     background-color: white;
-    /*margin-bottom: 1.125rem;*/
     white-space: nowrap;
 }
 
@@ -201,25 +201,40 @@ a {
     margin: 2rem;
 }
 
-#postContainer {
-    width: 60%;
+#postContainer,#not-post {
+    width: 75%;
     margin: 0 auto;
 }
-
-
-
-
 
 #postContainer > .article-box-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    justify-items: center;
+    place-items: center;
     padding: 2rem;
     grid-gap: 1rem;
     background-color: #f4f3f1;
     border-radius: 0.3rem;
 }
 
+
+/*---- 게시물 표시---------*/
+#not-post > .not-article {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 30rem;
+    padding: 2rem;
+    grid-gap: 1rem;
+    background-color: #f4f3f1;
+    border-radius: 0.3rem;
+}
+/*게시물이 없을때 표시되게*/
+
+#not-post > .not-article > .not-list {
+    background-color: #f4f3f1;
+    font-weight: bold;
+}
 
 
 #postContainer > span {
@@ -271,11 +286,11 @@ a {
 #postContainer > .article-box-grid > .article-list > .myArticleLink > span {
     width: 15rem;
     overflow: hidden;
-    font-size: 1.3rem;
-    font-weight: bold;
     text-overflow: ellipsis;
     white-space: nowrap;
     text-align: center;
+    font-size: 1.3rem;
+    font-weight: bold;
     margin-bottom: 1rem;
 }
 
@@ -324,35 +339,6 @@ a {
     font-weight: 500;
     background-color: #ff7257;
 }
-
-
-/*#popup {*/
-/*    top: 0;*/
-/*    left: -2rem;*/
-/*    width: 24rem;*/
-/*    height: 100vh;*/
-/*    background-color: #f0f0f0;*/
-/*    box-shadow: 0 0 1rem 0.0625rem #00000010;*/
-/*    opacity: 0;*/
-/*    overflow: hidden auto;*/
-/*    pointer-events: none;*/
-/*    position: fixed;*/
-/*    transition-duration: 250ms;*/
-/*    transition-property: left, opacity;*/
-/*    transition-timing-function: ease;*/
-/*    z-index: 9;*/
-
-/*    align-items: stretch;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    justify-content: flex-start;*/
-/*}*/
-
-/*#popup.visible {*/
-/*    left: 0;*/
-/*    opacity: 1;*/
-/*    pointer-events: all;*/
-/*}*/
 
 #popup.visible {
     opacity: 1;

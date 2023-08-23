@@ -1,9 +1,11 @@
 package com.bsh.projectwemeet.services;
 
 import com.bsh.projectwemeet.entities.FaqEntity;
+import com.bsh.projectwemeet.entities.QnaEntity;
 import com.bsh.projectwemeet.entities.UserEntity;
 import com.bsh.projectwemeet.enums.PatchNoticeViewResult;
 import com.bsh.projectwemeet.mappers.FaqMapper;
+import com.bsh.projectwemeet.models.PagingModel;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +17,10 @@ import java.util.Date;
 public class FaqService {
 
     private final FaqMapper faqMapper;
+
+    public static final int PAGE_COUNT = 6; //최대페이지 6개로 설정
+
+
 
     public FaqService(FaqMapper faqMapper) {
         this.faqMapper = faqMapper;
@@ -31,18 +37,26 @@ public class FaqService {
         return check;
     }
 
-    public boolean putEventWriter(HttpServletRequest request, FaqEntity faq) {
+    public boolean putEventWriter(HttpSession session,HttpServletRequest request, FaqEntity faq) {
+        UserEntity user = (UserEntity) session.getAttribute("user");
+
         faq.setCreatedAt(new Date())
                 .setClientIp(request.getRemoteAddr())
-                .setClientUa(request.getHeader("User-Agent"));
+                .setClientUa(request.getHeader("User-Agent"))
+                .setNickname(user.getNickname());
         return this.faqMapper.insertArticle(faq) > 0
                 ? true
                 : false;
     }
 
-    public FaqEntity[] getCountArticle() {
-        return this.faqMapper.selectCountArticle();
-    }
+    public int getCount(String searchQuery){
+        return this.faqMapper.selectFaqPagingByCount(searchQuery);
+    } //사용자의 세션 관련해 Qna 목록 확인 가능
+
+    public FaqEntity[] getByPage(PagingModel pagingModel, String searchQuery) {
+        FaqEntity[] faq = this.faqMapper.selectFaqPaging(pagingModel,searchQuery);
+        return faq;
+    } //사용자의 세션 관련해 Qna 목록 확인 가능
 
     public FaqEntity readArticle(int index) {
         FaqEntity article = this.faqMapper.selectArticleByIndex(index);

@@ -226,7 +226,7 @@ recoverForm['emailSend'].onclick = e =>{
             });
             return;
         }
-        loadingForm.show();
+        // loadingForm.show();
         const xhr = new XMLHttpRequest();
         const formData = new FormData();
         formData.append('email', recoverForm['pEmail'].value);

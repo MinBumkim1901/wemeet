@@ -11,14 +11,17 @@ html {
     padding: 0;
 }
 
-
-
+a {
+    color: black;
+    text-decoration: none;
+}
 
 html {
     scroll-behavior: smooth;
     font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 
 }
+
 body{
     background-color: white;
     scroll-behavior: smooth;
@@ -30,8 +33,6 @@ body{
 
 /*----------------------------------------------------------------------------------------------------*/
 
-
-@media screen and (min-width: 1051px) {
     #headerContainer {
         top: 0;
         background-color: var(--concept-color-light);
@@ -51,19 +52,18 @@ body{
     }
 
     #headerContainer > .header > .menu {
-        align-items: center;
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
+       align-items: center;
+       display: flex;
+       flex-direction: row;
+       justify-content: center;
         list-style-type: none;
         margin-block: unset;
         margin-inline: unset;
         padding-inline: unset;
-        width: 10rem;
     }
 
     #headerContainer > .header > .menu > .item{
-        margin-right: 1rem;
+        margin-right: 0.8rem;
     }
 
     #headerContainer > .header > .menu > .item > a > .profile {
@@ -107,41 +107,39 @@ body{
         margin-top: 0.5rem;
     }
 
-    #headerContainer > .header > .empty-box {
-        align-items: center;
-        display: flex;
-        flex-direction: row;
-        flex: 1;
-        justify-content: flex-start;
-        margin: 0 3rem;
-    }
 
     #headerContainer > .header > .menu > .item > a > i:hover{
         color: #FB6161;
     }
+
     #headerContainer > .header > .menu > .item > a > .tooltip{
         position: absolute;
         visibility: hidden;
         opacity: 0;
         transition: opacity 0.3s ease-in-out;
     }
+
     #headerContainer > .header > .menu > .item:hover .tooltip{
         opacity: 1;
         visibility: visible;
         font-size: 0.8rem;
     }
+
     #headerContainer > .header > .menu > .item > button > a >i{
         font-size: 1.2rem;
     }
+
     #headerContainer > .header > .menu > .item > button > a >i:hover{
         color: #FB6161;
     }
+
     #headerContainer > .header > .menu > .item > button > a >.tooltip{
         position: absolute;
         visibility: hidden;
         opacity: 0;
         transition: opacity 0.3s ease-in-out;
     }
+
     #headerContainer > .header > .menu > .item > button:hover .tooltip{
         opacity: 1;
         visibility: visible;
@@ -158,11 +156,6 @@ body{
         width: 80%;
         margin: 0 auto;
     }
-
-    .category-750px {
-        display: none;
-    }
-
 
     .introduce_article {
         align-items: center;
@@ -183,10 +176,6 @@ body{
         font-weight: 550;
         font-size: 1.5rem;
         margin: 0.5rem;
-    }
-
-    .margin {
-        margin-bottom: 0.9rem;
     }
 
     .article-category > .category {
@@ -232,7 +221,7 @@ body{
     }
 
 
-    /*----------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------*/
     .article-box {
         align-items: center;
         display: flex;
@@ -251,15 +240,13 @@ body{
         padding: 1rem 0 0.5rem 0;
     }
 
-
     .article-list > .article-link {
-        /*border: 1px solid red;*/
-        width: 30rem;
+        width: 29rem;
         height: 15rem;
         align-items: center;
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: space-evenly;
         background-color: white;
         border-radius: 0.5rem;
         padding: 0.8rem;
@@ -267,10 +254,9 @@ body{
         gap: 1rem; /* 이미지와 텍스트 사이의 간격 */
     }
 
-
     .article-list > .article-link > .article-thumbnail {
-        width: 13rem;
-        height: 13rem;
+        width: 14rem;
+        height: 14rem;
         align-items: center;
         display: flex;
         flex-direction: column;
@@ -280,8 +266,8 @@ body{
     }
 
     .article-list > .article-link > .article-thumbnail > .thumbnail {
-        width: 13rem;
-        height: 13rem;
+        width: 14rem;
+        height: 14rem;
         border-radius: 15px;
     }
 
@@ -290,13 +276,7 @@ body{
         display: flex;
         flex-direction: column;
         justify-content: center;
-        margin-right: 2rem;
-        margin-top: 2rem;
-    }
-
-    .article-tag {
-        display: block;
-        margin-bottom: 1.5rem;
+        margin-top: 1rem;
     }
 
     .tag {
@@ -305,8 +285,8 @@ body{
         background-color: #eaeaea;
         font-weight: 500;
         color: black;
-        padding: 0.6rem;
-        font-size: 1.1rem;
+        padding: 0.5rem;
+        font-size: 1.2rem;
     }
 
     .tag.comment {
@@ -315,20 +295,20 @@ body{
         background-color: #ff7257;
     }
 
-    .article-title {
+    .article-content-box > .article-title {
+        width: 130px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         margin-bottom: 1rem;
+        margin-top: 1.3rem;
         font-weight: bold;
         font-size: 1.3rem;
-        width: 200px;
     }
 
     .article-map {
         font-weight: 800;
     }
-
 
     .article-map > .article-location {
         display: flex;
@@ -336,22 +316,20 @@ body{
         align-items: center;
         margin-bottom: 0.3rem;
         font-size: 1rem;
-        width: 200px;
     }
 
     .article-map > .article-location > span {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        width: 130px;
     }
-
 
     .article-map > .article-location > .location, .day-img, .time-img {
         width: 1.35rem;
         height: 1.35rem;
         margin-right: 0.3rem;
     }
-
 
     h2 {
         white-space: nowrap;
@@ -387,8 +365,389 @@ body{
         margin-top: 0.3rem;
     }
 
-    a {
-        color: black;
+
+@media screen and (max-width: 1050px) {
+
+    #headerContainer {
+        top: 0;
+        background-color: var(--concept-color-light);
+        overflow: hidden;
+        z-index: 100;
+        width: 90%;
+        margin: 0 auto;
     }
+
+    .text {
+        color: black;
+        font-weight: 500;
+        white-space: nowrap;
+    }
+
+    .article-category > .category {
+        padding: 3rem 0 0 0;
+        font-size: 1.1rem;
+        cursor: default;
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+
+    .category-img {
+        width: 21px;
+        height: 21px;
+        margin-right: 0.5rem;
+        object-fit: cover;
+    }
+
+
+    .article-list > .article-link {
+        /*border: 1px solid red;*/
+        width: 26.3rem;
+        height: 14rem;
+        padding: 1rem 0rem 1rem 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+
+    .article-list > .article-link > .article-thumbnail {
+        width: 13rem;
+        height: 13rem;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-radius: 0.3rem;
+        margin: 0 0 0rem 0.5rem;
+
+    }
+
+    .article-list > .article-link > .article-thumbnail > .thumbnail {
+        width: 13rem;
+        height: 13rem;
+        border-radius: 15px;
+    }
+
+    .article-content-box {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+
+    .article-tag {
+        display: block;
+    }
+
+    .tag {
+        border-radius: 0.5rem;
+        background-color: #eaeaea;
+        font-weight: 500;
+        color: black;
+        padding: 0.6rem;
+        font-size: 1rem;
+    }
+
 }
+
+@media screen and (max-width: 950px) {
+
+    #headerContainer > .header > .menu > .item > .icon-text-button > .icon-box > .icon {
+        width: 70%;
+        height: 70%;
+        align-items: center;
+        margin-top: 0.5rem;
+    }
+
+    .notice-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #FB6161;
+        margin-top: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    .notice-text {
+        font-weight: 550;
+        font-size: 1.2rem;
+        margin: 0.5rem;
+    }
+
+    .article-category > .category {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        margin: 1.5rem 0 1.5rem 0;
+        padding: 0rem;
+        font-weight: 600;
+        font-size: 1.2rem;
+        cursor: default;
+    }
+
+    .articleLink {
+        margin: 1rem;
+    }
+
+    .underline {
+        border-bottom-color: rgba(0, 0, 0, 1); /* 밑줄 색상 설정 */
+        border-bottom-width: 3px; /* 밑줄 두께 설정 */
+        border-bottom-style: solid; /* 밑줄 스타일 설정 */
+    }
+
+    .article-box-grid {
+        display: grid;
+        margin: 1rem;
+        grid-template-columns: repeat(1, 1fr);
+        align-items: center; /* 수직 정렬 */
+        justify-items: center;
+        grid-gap: 1rem;
+        padding: 1rem 0 0.5rem 0;
+    }
+
+    .article-tag{
+        width: 200px;
+    }
+
+
+    .article-list > .article-link {
+        width: 26rem;
+        height: 14rem;
+        background-color: white;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+
+
+    .article-list > .article-link > .article-thumbnail {
+        width: 13rem;
+        height: 13rem;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-radius: 0.3rem;
+    }
+
+    .article-list > .article-link > .article-thumbnail > .thumbnail {
+        width: 13rem;
+        height: 13rem;
+        border-radius: 15px;
+    }
+
+    /*------------------------------------------------------*/
+}
+
+@media screen and (max-width: 580px) {
+
+    #headerContainer > .header > .menu > .item > a > .profile {
+        position: relative;
+        background-color: white;
+        object-fit: cover;
+        border-radius: 10rem;
+        width: 30px;
+        height: 30px;
+    }
+
+    .notice-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #FB6161;
+        margin-top: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    .notice-text {
+        font-weight: 550;
+        font-size: 1.2rem;
+        margin: 0.5rem;
+    }
+
+    .article-category > .category {
+        font-size: 0.95rem;
+    }
+
+    .underline {
+        border-bottom-color: rgba(0, 0, 0, 1); /* 밑줄 색상 설정 */
+        border-bottom-width: 3px; /* 밑줄 두께 설정 */
+        border-bottom-style: solid; /* 밑줄 스타일 설정 */
+    }
+
+    .article-box-grid {
+        display: grid;
+        margin: 1rem;
+        grid-template-columns: repeat(1, 1fr);
+        align-items: center; /* 수직 정렬 */
+        justify-items: center;
+        grid-gap: 1rem;
+        padding: 1rem 0 0.5rem 0;
+    }
+
+}
+
+@media screen and (max-width: 470px) {
+
+
+    .article-list > .article-link {
+        width: 20.5rem;
+        height: 12rem;
+    }
+
+    .article-list > .article-link > .article-thumbnail {
+        width: 10.5rem;
+        height: 10.5rem;
+    }
+
+    .article-list > .article-link > .article-thumbnail > .thumbnail {
+        width: 10.5rem;
+        height: 10.5rem;
+        border-radius: 15px;
+    }
+
+    .article-content-box > .article-map > .article-location > span{
+        font-size: 0.8rem;
+        width: 80px;
+    }
+
+    .article-human > .Profile {
+        width: 1.3rem;
+        height: 1.3rem;
+    }
+
+    .article-content-box > .article-map > .article-location > .location, .day-img, .time-img{
+        width: 1rem;
+        height: 1rem;
+    }
+
+    .article-content-box > .article-title{
+        font-size: 1rem;
+    }
+
+    .article-tag{
+        width: 150px;
+    }
+
+    .article-tag > .tag {
+        margin: 0rem 0.2rem 0rem 0;
+        padding: 0.4rem;
+        font-size: 0.8rem;
+    }
+
+
+
+    .article-human > .limit-image {
+        width: 1.5rem;
+        margin-left: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .article-human > .number {
+        font-size: 0.7rem;
+    }
+
+}
+
+@media screen and (max-width: 398px) {
+
+    #headerContainer > .header > .menu > .item > a > .profile {
+        position: relative;
+        background-color: white;
+        object-fit: cover;
+        border-radius: 10rem;
+        width: 20px;
+        height: 20px;
+    }
+
+    .notice-title {
+        font-size: 1rem;
+    }
+
+    .notice-text {
+        font-size: 1rem;
+    }
+
+    .article-searchResult > span{
+        font-size: 1rem;
+    }
+
+    .articleLink{
+        margin: 0.4rem;
+    }
+
+
+
+
+
+    .article-category > .category {
+        font-size: 0.5rem;
+    }
+
+    .article-list > .article-link {
+        width: 15rem;
+        height: 9rem;
+    }
+
+    .article-list > .article-link > .article-thumbnail {
+        width: 8rem;
+        height: 8rem;
+    }
+
+    .article-list > .article-link > .article-thumbnail > .thumbnail {
+        width: 8rem;
+        height: 8rem;
+        border-radius: 15px;
+    }
+
+    .article-content-box{
+        width: 300px;
+    }
+
+
+    .article-tag{
+        width: 100px;
+        margin-bottom: 0.5rem;
+    }
+
+    .article-content-box > .article-title{
+        width: 80px;
+        margin: 0.3rem 0 0.5rem 0;
+    }
+
+    .article-tag > .tag {
+        margin: 0rem 0.2rem 0rem 0;
+        padding: 0.3rem;
+        font-size: 0.8rem;
+    }
+
+    .article-tag > .tag.comment {
+        display: none;
+    }
+
+
+
+
+
+
+    .article-container > .article-box > .article-list > .article-thumbnail {
+        width: 8rem;
+        height: 8rem;
+    }
+
+    .article-container > .article-box > .article-list > .article-thumbnail > .thumbnail {
+        width: 8rem;
+        height: 8rem;
+    }
+
+    .article-content-box > .article-map > .article-location > span{
+        font-size: 0.1rem;
+        width: 80px;
+    }
+
+}
+
+
+
+
+
 

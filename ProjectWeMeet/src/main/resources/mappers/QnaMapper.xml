@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bsh.projectwemeet.mappers.QnaMapper">
+
+    <insert id="insertQna"
+            useGeneratedKeys="true"
+            keyProperty="index"
+            keyColumn="index"
+            parameterType="com.bsh.projectwemeet.entities.QnaEntity">
+        INSERT INTO `wemeet_project`.`qna`(email, qna_type, title, content, created_at, answer_flag,nickname)
+        VALUES (#{email}, #{qna_type}, #{title}, #{content}, #{createdAt},#{answerFlag},#{nickname})
+    </insert>
+
+    <insert id="insertQnaAnswer"
+            useGeneratedKeys="true"
+            keyProperty="index"
+            keyColumn="index"
+            parameterType="com.bsh.projectwemeet.entities.QnaAnswerEntity">
+        INSERT INTO `wemeet_project`.`qna_answer`(qna_index,answer, created_at)
+        VALUES (#{qnaIndex}, #{answer}, #{createdAt})
+    </insert>
+
+    <select id="selectQnaCountByUser"
+            resultType="int">#결과값 int형으로 변환해서 돌려준다
+        SELECT COUNT(0) AS `count`
+        FROM `wemeet_project`.`qna`
+        <where>
+            <if test="email != null">
+                AND `email` = #{email}
+            </if>
+            <if test='searchCriterion.equals("title")'>
+                AND `title` LIKE CONCAT('%',#{searchQuery},'%')
+            </if>
+        </where>
+    </select>
+
+    <select id="selectByPageUser"
+            resultType="com.bsh.projectwemeet.entities.QnaEntity">#결과값 메모엔터티 값으로 돌려준다
+        SELECT `index` AS `index`,
+        `title` AS `title`,
+        `email` AS `email`,
+        `qna_type` AS `qna_type`,
+        `created_at` AS `createdAt`,
+        `content` AS `content`,
+        `answer_flag` AS `answerFlag`
+        FROM `wemeet_project`.`qna`
+        <where>
+            <if test="email != null">
+                AND `email` = #{email}
+            </if>
+            <if test='searchCriterion.equals("title")'>
+                AND `title` LIKE CONCAT('%',#{searchQuery},'%')
+            </if>
+        </where>
+        ORDER BY `index` DESC
+        LIMIT #{pagingModel.pageCount} OFFSET #{pagingModel.offset}<!--value의 이름과 같아야된다-->
+    </select>
+
+    <select id="selectQnaCountByAdmin"
+            resultType="int">#결과값 int형으로 변환해서 돌려준다
+        SELECT COUNT(0) AS `count`
+        FROM `wemeet_project`.`qna`
+        <where>
+            <if test='searchCriterion.equals("title")'>
+                AND `title` LIKE CONCAT('%',#{searchQuery},'%')
+            </if>
+        </where>
+    </select>
+
+    <select id="selectByPageAdmin"
+            resultType="com.bsh.projectwemeet.entities.QnaEntity">#결과값 메모엔터티 값으로 돌려준다
+        SELECT `index` AS `index`,
+        `title` AS `title`,
+        `email` AS `email`,
+        `qna_type` AS `qna_type`,
+        `created_at` AS `createdAt`,
+        `content` AS `content`,
+        `answer_flag` AS `answerFlag`
+        FROM `wemeet_project`.`qna`
+        <where>
+            <if test='searchCriterion.equals("title")'>
+                AND `title` LIKE CONCAT('%',#{searchQuery},'%')
+            </if>
+        </where>
+        ORDER BY `index` DESC
+        LIMIT #{pagingModel.pageCount} OFFSET #{pagingModel.offset}<!--value의 이름과 같아야된다-->
+    </select>
+
+    <select id="selectQnaByEmail"
+            resultType="com.bsh.projectwemeet.entities.QnaEntity">
+        SELECT `index`      AS `index`,
+               `title`      AS `title`,
+               `email` AS `email`,
+               `qna_type` AS `qna_type`,
+               `created_at` AS `createdAt`,
+               `content`    AS `content`,
+               `answer_flag` AS `answerFlag`
+        FROM `wemeet_project`.`qna`
+        WHERE `email` = #{email}
+        ORDER BY `index` DESC
+    </select>
+
+    <select id="selectQnaByAdmin"
+            resultType="com.bsh.projectwemeet.entities.QnaEntity">
+        SELECT `index`      AS `index`,
+               `title`      AS `title`,
+               `email` AS `email`,
+               `qna_type` AS `qna_type`,
+               `created_at` AS `createdAt`,
+               `content`    AS `content`,
+               `answer_flag` AS `answerFlag`
+        FROM `wemeet_project`.`qna`
+        ORDER BY `index` DESC
+    </select>
+
+    <select id="selectCheckUser"
+            resultType="com.bsh.projectwemeet.entities.UserEntity">
+        SELECT `email`      AS `email`,
+               `name`       AS `name`,
+               `nickname`   AS `nickname`,
+               `admin_flag` AS `isAdmin`
+        FROM `wemeet_project`.`users`
+        WHERE `email` = #{email}
+        LIMIT 1
+    </select>
+
+    <select id="selectQnaByIndex"
+            resultType="com.bsh.projectwemeet.entities.QnaEntity">
+        SELECT `index`       AS `index`,
+               `email`      AS `email`,
+               `title`       AS `title`,
+               `content`     AS `content`,
+               `qna_type` AS `qna_type`,
+               `answer_flag` AS `answerFlag`,
+               `nickname` AS `nickname`
+        FROM `wemeet_project`.`qna`
+        WHERE `index` = #{index}
+        LIMIT 1
+    </select>
+
+    <select id="selectQnaAnswerByIndex"
+            resultType="com.bsh.projectwemeet.entities.QnaAnswerEntity">
+        SELECT `index`       AS `index`,
+               `qna_index` AS `qnaIndex`,
+               `answer`      AS `answer`
+        FROM `wemeet_project`.`qna_answer`
+        WHERE `qna_index` = #{index}
+        LIMIT 1
+    </select>
+
+    <delete id="deleteQnaByIndex"
+            parameterType="com.bsh.projectwemeet.entities.QnaEntity">
+        DELETE
+        FROM `wemeet_project`.`qna`
+        WHERE `index` = #{index}
+        LIMIT 1
+    </delete>
+
+    <delete id="deleteAnswerByIndex"
+            parameterType="com.bsh.projectwemeet.entities.QnaAnswerEntity">
+        DELETE
+        FROM `wemeet_project`.`qna_answer`
+        WHERE `qna_index` = #{qnaIndex}
+        LIMIT 1
+    </delete>
+
+    <update id="updateQnaAnswer"
+            parameterType="com.bsh.projectwemeet.entities.QnaEntity">
+        UPDATE `wemeet_project`.`qna`
+        SET `answer_flag` = #{answerFlag}
+        WHERE `index` = #{index}
+        LIMIT 1
+    </update>
+
+    <update id="updateQna"
+            parameterType="com.bsh.projectwemeet.entities.QnaEntity">
+        UPDATE `wemeet_project`.`qna`
+        SET `title`       =#{title},
+            `content`     =#{content},
+            `qna_type` =#{qna_type}
+        WHERE `index` = #{index}
+        LIMIT 1
+    </update>
+
+</mapper>

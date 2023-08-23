@@ -3,6 +3,8 @@ package com.bsh.projectwemeet.controllers;
 import com.bsh.projectwemeet.entities.FaqEntity;
 import com.bsh.projectwemeet.entities.UserEntity;
 import com.bsh.projectwemeet.enums.PatchNoticeViewResult;
+import com.bsh.projectwemeet.models.PagingModel;
+import com.bsh.projectwemeet.services.AdminService;
 import com.bsh.projectwemeet.services.FaqService;
 import org.json.JSONObject;
 import org.springframework.http.MediaType;
@@ -31,12 +33,26 @@ public class FaqController {
     @RequestMapping(value = "faq",
             method = RequestMethod.GET,
             produces = MediaType.TEXT_HTML_VALUE)
-    public ModelAndView getEvent(HttpSession session){
+    public ModelAndView getEvent(@RequestParam(value = "p", defaultValue = "1",required = false)int requestPage,
+                                 @RequestParam(value = "q", defaultValue = "", required = false) String searchQuery,
+                                 HttpSession session){
         ModelAndView modelAndView = new ModelAndView("home/Faq/faq");
+        int searchResultCount = this.faqService.getCount(searchQuery);
         UserEntity user = this.faqService.CheckUser(session);
-        FaqEntity[] faqArticle = this.faqService.getCountArticle();
+
+        PagingModel pagingModel = new PagingModel(
+                FaqService.PAGE_COUNT,
+                this.faqService.getCount(searchQuery),
+                requestPage); //객체화
+
+        FaqEntity[] faq = this.faqService.getByPage(pagingModel,searchQuery);
+
+
         modelAndView.addObject("user", user);
-        modelAndView.addObject("faq",faqArticle);
+        modelAndView.addObject("faq",faq);
+        modelAndView.addObject("pagingModel",pagingModel);
+        modelAndView.addObject("searchQuery",searchQuery);
+        modelAndView.addObject("searchResult",searchResultCount);
         return modelAndView;
     } //메인 홈 주소
 
@@ -48,8 +64,8 @@ public class FaqController {
 
     @RequestMapping(value = "faqWriter", method = RequestMethod.POST, produces = MediaType.TEXT_HTML_VALUE)
     @ResponseBody
-    public ModelAndView postNoticeWriter(HttpServletRequest request, FaqEntity faq) {
-        boolean result = this.faqService.putEventWriter(request, faq);
+    public ModelAndView postNoticeWriter(HttpSession session,HttpServletRequest request, FaqEntity faq) {
+        boolean result = this.faqService.putEventWriter(session,request, faq);
         ModelAndView modelAndView = new ModelAndView("home/Faq/faqWrite");
         if (result) {
 //          성공적으로 작성되었다면 noticeView로 전환

@@ -2,6 +2,15 @@ const Articles = document.getElementById('Article');
 const categories = Articles.querySelectorAll('.category-item');
 const articleLinks = Articles.querySelectorAll('.articleLink');
 
+Article.onsubmit = e => {
+    if(Article['q'].value === ''){
+        alert('검색어를 입력해주세요');
+        Article['q'].focus();
+        return false;
+    }
+}
+
+
 let url = window.location.href; //현재 컴퓨터가 실행되고있는 URL을 가져온다.
 
 var categoriesParam = new URL(url).searchParams.get("category"); //url에서 category라는 매개변수의 값을 가져온다

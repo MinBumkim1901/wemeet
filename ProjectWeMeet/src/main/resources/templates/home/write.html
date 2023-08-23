@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" >
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>게시판 작성</title>
     <link crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css"
           rel="stylesheet">
     <link rel="icon" th:href="@{/resources/images/favicon/favicon.png}" type="image/x-icon">
     <link rel="stylesheet" th:href="@{/resources/stylesheets/write.css}">
     <link rel="stylesheet" th:href="@{/resources/stylesheets/Article-Write/Article-Write.css}">
-    <link rel="stylesheet" th:href="@{/resources/stylesheets/Article-Write/Article-Write-800px.css}">
     <script type="text/javascript"
             src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ecdfc98a188ee7f356932f3bc0506125&libraries=services"></script>
     <script th:src="@{/resources/libraries/ckeditor/ckeditor.js}"></script>
@@ -18,10 +20,10 @@
         alert('로그인하고 이용해주세요');
         window.location.href="/login";
     </script>
-
 </head>
+
 <body th:if="${session.user != null}">
-<div class="inner" >
+<div class="inner">
     <h2 class="logo_we_meet">
         <a href="/" class="link">
             <img th:src="@{/resources/images/logoImages/logo-224x48.png}" class="logo"/>
@@ -44,13 +46,10 @@
                             <input type="time" class="time" name="time">
                         </div>
                         <div class="sub_title">참여인원과 카테고리를 설정해주세요</div>
-
                             <div class="box_one">
-                                <span class="text">제한인원</span>
-                                <input type="number" class="limit" name="limit" min="2">
+                                <input type="number" class="limit" name="limit" min="2" placeholder="참여인원">
                             </div>
                             <div class="box_two">
-                                <span class="text">카테고리</span>
                                 <select name="category" class="category">
                                     <option disabled hidden selected value="">카테고리</option>
                                     <option value="운동">운동,액티비티</option>
@@ -95,7 +94,7 @@
     </div>
 </div>
 
-<form id="Article-Form" style="display: none">
+<form id="Article-Form" style="display: none" >
     <div class="logo-form">
         <a href="/"><img class="logo" th:src="@{/resources/images/logoImages/bulletinLogo.png}"></a>
     </div>

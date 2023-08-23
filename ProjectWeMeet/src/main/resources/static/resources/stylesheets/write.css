@@ -10,8 +10,6 @@
 body,html{
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
     background-color: white;
 }
 
@@ -19,11 +17,11 @@ body,html{
 .inner{
     display: flex;
     flex-direction: column;
+    justify-content: center;
     position: relative;
     padding: 1rem;
     width: 65rem;
-
-    margin: 5rem auto 0;
+    margin: 0 auto;
 }
 
 
@@ -168,9 +166,16 @@ body,html{
 }
 
 .inner > .buttonBox > ._button{
-    width: 5rem;
-    height: 3rem;
-    padding: 0;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    border: none;
+    background-color: #FB6161;
+    color: white;
+}
+
+.inner > .buttonBox > ._button:hover{
+    cursor: pointer;
+    filter: brightness(90%);
 }
 
 

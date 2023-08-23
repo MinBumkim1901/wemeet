@@ -263,7 +263,7 @@
                `mypage`.`profile_thumbnail`      AS `thumbnail`,
                `mypage`.`profile_thumbnail_mime` AS `thumbnailMime`
         FROM `wemeet_project`.`articles` AS `article`
-                 LEFT JOIN `wemeet_project`.`mypages` AS `mypage` ON `article`.`email` = `mypage`.`email`
+                 LEFT JOIN `wemeet_project`.`mypage` AS `mypage` ON `article`.`email` = `mypage`.`email`
         WHERE `article`.`index` = #{index}
         LIMIT 1
     </select>
@@ -289,9 +289,9 @@
                 FROM `wemeet_project`.`Participants`
                 WHERE `article`.`index` = `Participants`.`ArticleIndex`
                 LIMIT 1 OFFSET 0)                 AS `participantEmail`,
-               (SELECT `mypages`.`profile_thumbnail`
-                FROM `wemeet_project`.`mypages`
-                WHERE `participantEmail` = `mypages`.`email`
+               (SELECT `mypage`.`profile_thumbnail`
+                FROM `wemeet_project`.`mypage`
+                WHERE `participantEmail` = `mypage`.`email`
                 AND `mypage`.`index`
                 LIMIT 1 )                 AS `thumbnail`
         FROM `wemeet_project`.`articles` AS `article`
@@ -321,9 +321,9 @@
                 FROM `wemeet_project`.`Participants`
                 WHERE `article`.`index` = `Participants`.`ArticleIndex`
                 LIMIT 1 OFFSET 1)                 AS `participantEmail`,
-               (SELECT `mypages`.`profile_thumbnail`
-                FROM `wemeet_project`.`mypages`
-                WHERE `participantEmail` = `mypages`.`email`
+               (SELECT `mypage`.`profile_thumbnail`
+                FROM `wemeet_project`.`mypage`
+                WHERE `participantEmail` = `mypage`.`email`
                 LIMIT 1 )                 AS `thumbnail`
         FROM `wemeet_project`.`articles` AS `article`
                  LEFT JOIN `wemeet_project`.`mypages` AS `mypage` ON `article`.`email` = `mypage`.`email`
@@ -556,7 +556,7 @@
                `profile_thumbnail`      AS `profileThumbnail`,
                `profile_thumbnail_mime` AS `profileThumbnailMime`,
                `introduce_text`         AS `introduceText`
-        FROM `wemeet_project`.`mypages`
+        FROM `wemeet_project`.`mypage`
         WHERE `email` = #{email}
         LIMIT 1
     </select>
@@ -782,7 +782,7 @@
                `Participant`.`ArticleIndex`    AS `ArticleIndex`,
                `mypage`.`email`     AS `email`,
                `mypage`.`nickname`  AS `nickname`
-        FROM `wemeet_project`.`mypages` AS `mypage`
+        FROM `wemeet_project`.`mypage` AS `mypage`
                  LEFT JOIN `wemeet_project`.`Participants` AS `Participant` ON `Participant`.`email` = `mypage`.`email`
         WHERE `Participant`.`ArticleIndex` = #{ArticleIndex}
     </select>
@@ -809,7 +809,7 @@
                u.`profile_thumbnail` AS `profileThumbnail`,
                u.`profile_thumbnail` AS `profileThumbnailMime`
         FROM `wemeet_project`.`Participants` p
-                 LEFT JOIN `wemeet_project`.`mypages` u ON p.`email` = u.`email`
+                 LEFT JOIN `wemeet_project`.`mypage` u ON p.`email` = u.`email`
         WHERE p.`ArticleIndex` = #{ArticleIndex}
     </select>
 

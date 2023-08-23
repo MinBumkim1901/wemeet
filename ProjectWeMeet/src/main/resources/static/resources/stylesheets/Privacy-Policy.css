@@ -81,3 +81,18 @@ body{
     font-weight: bold;
     white-space: pre;
 }
+
+@media screen and (max-width: 370px) {
+    .layout > h2 {
+        font-size: 1.1rem;
+    }
+
+    .layout > a > img{
+        position: absolute;
+        width: 1.5rem;
+        left: 10px;
+    }
+
+
+}
+

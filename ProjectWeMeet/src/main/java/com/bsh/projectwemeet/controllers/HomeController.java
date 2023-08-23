@@ -93,8 +93,6 @@ public class HomeController {
 
     @RequestMapping(value = "/profiles", method = RequestMethod.GET)
     public ResponseEntity<byte[]> getParticipantProfileThumbnail(HttpSession session) {
-//        UserEntity loginUser = (UserEntity) session.getAttribute("user");
-
         ProfileEntity loginProfiles = this.homeService.selectLoginProfile(session);
 
         ResponseEntity<byte[]> response;
@@ -108,7 +106,6 @@ public class HomeController {
         }
         return response;
     }
-
 
 
 }

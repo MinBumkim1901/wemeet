@@ -293,11 +293,11 @@ eXpert 서비스 및 eXpert 센터 가입 등록정보 : 신청일로부터 6개
                         <label for="gender2">여자</label>
                     </div>
                 </div>
-                <ul class="warningList">
-                    <li><span class="warning" rel="nameWarning"></span></li>
-                    <li><span class="warning" rel="birthWarning"></span></li>
-                    <li><span class="warning" rel="genderWarning"></span></li>
-                </ul>
+                <span class="warningList">
+                    <span class="warning" rel="nameWarning"></span>
+                   <span class="warning" rel="birthWarning"></span>
+                   <span class="warning" rel="genderWarning"></span>
+                </span>
 
                 <div class="form_list">
                     <div class="form_item id">
@@ -308,7 +308,7 @@ eXpert 서비스 및 eXpert 센터 가입 등록정보 : 신청일로부터 6개
                     </div>
                     <div class="form_item">
                         <div class="input-wrapper">
-                            <input type="text" class="input nickname" placeholder="별명(2글자 이상 10글자 이하 영어 대소문자,한글)" maxlength="10"
+                            <input type="text" class="input nickname" placeholder="별명(2글자 이상 8글자 이하 영어 대소문자,한글)" maxlength="8"
                                    name="nickname">
                             <img th:src="@{/resources/images/registerImags/nickname.png}" alt="x" class="img">
                         </div>
@@ -332,11 +332,11 @@ eXpert 서비스 및 eXpert 센터 가입 등록정보 : 신청일로부터 6개
                         </div>
                     </div>
                 </div>
-                <ul class="warningList">
-                    <li><span class="warning" rel="emailWarning"></span></li>
-                    <li><span class="warning" rel="nicknameWarning"></span></li>
-                    <li><span class="warning" rel="passwordWarning"></span></li>
-                </ul>
+                <span class="warningList">
+                    <span class="warning" rel="emailWarning"></span>
+                    <span class="warning" rel="nicknameWarning"></span>
+                    <span class="warning" rel="passwordWarning"></span>
+                </span>
 
                 <div class="form_list">
                     <div class="form_item addressFirst">

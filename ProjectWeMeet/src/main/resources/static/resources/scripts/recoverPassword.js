@@ -52,9 +52,6 @@ recoverPassword.onsubmit = e => {
         recoverPassword['EmailCode'].classList.add('_invalid');
         recoverPassword['EmailCode'].focus();
         recoverPassword['EmailCode'].select();
-        setTimeout(() => {
-            hideElement(recoverPassword.warning);
-        }, 1000);
         return;
     }
 

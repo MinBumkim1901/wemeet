@@ -115,29 +115,31 @@ h1 {
 .warningList{
     list-style: none;
     display: block;
+    text-align: center;
+    height: 3rem;
+
 }
 
 .warning {
     max-height: 0;
     color: #ef5350;
     font-size: 0.9rem;
-    margin: unset;
+
     overflow: hidden;
     transition-duration: 500ms;
     transition-property: max-height;
     transition-timing-function: ease;
+
 }
 
 .warning.visible {
-    max-height: 3rem;
+    max-height: 2rem;
 }
 
 .warning.green{
     color: #3498db;
 }
 
-
-/*textarea*/
 .term_box {
     display: block;
     width: 100%;
@@ -155,7 +157,7 @@ h1 {
     display: block;
     width: 100%;
     height: 65px;
-    overflow: hidden;
+    overflow: scroll;
     box-sizing: border-box;
     margin-top: 9px;
     padding: 15px;
@@ -204,5 +206,13 @@ h1 {
     opacity: 1;
     pointer-events: all;
     transform: scale(100%) translate(-50%, -50%);
+}
+
+@media (max-width: 500px) {
+
+    .term_box_small {
+        padding: 1px;
+    }
+
 }
 

@@ -40,7 +40,10 @@ public interface ProfileMapper {
 
     int updateContent(ProfileEntity profile);
 
-    int updateNickname(UserEntity user);
+    int updateUserNickname(UserEntity user);
+    //유저 닉네임 변경
+
+    int updatePageNickname(ProfileEntity profile);
 
     int updateAddress(UserEntity user);
     int updateThumbnail(ProfileEntity profile);

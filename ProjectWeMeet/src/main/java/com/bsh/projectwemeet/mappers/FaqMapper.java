@@ -1,9 +1,7 @@
 package com.bsh.projectwemeet.mappers;
 
-import com.bsh.projectwemeet.entities.EventEntity;
-import com.bsh.projectwemeet.entities.EventImagesEntity;
-import com.bsh.projectwemeet.entities.FaqEntity;
-import com.bsh.projectwemeet.entities.UserEntity;
+import com.bsh.projectwemeet.entities.*;
+import com.bsh.projectwemeet.models.PagingModel;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -13,9 +11,13 @@ public interface FaqMapper {
     UserEntity selectCheckUser(@Param(value = "email")String email);
     //관리자인지 확인하는 쿼리
 
+    int selectFaqPagingByCount(@Param(value = "searchQuery") String searchQuery);
+
+    FaqEntity[] selectFaqPaging(@Param(value = "pagingModel") PagingModel pagingModel,
+                                @Param(value = "searchQuery") String searchQuery);
+
     int insertArticle(FaqEntity faq);
 
-    FaqEntity[] selectCountArticle();
 
     FaqEntity selectArticleByIndex(@Param(value = "index") int index);
 

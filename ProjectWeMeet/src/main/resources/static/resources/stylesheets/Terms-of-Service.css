@@ -61,3 +61,17 @@ body{
     color: #666666;
     line-height: 30px;
 }
+
+@media screen and (max-width: 300px) {
+    .layout > h2 {
+        font-size: 1.1rem;
+    }
+
+    .layout > a > img{
+        position: absolute;
+        width: 1.5rem;
+        left: 10px;
+    }
+
+
+}

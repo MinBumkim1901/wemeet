@@ -19,7 +19,7 @@ public class HomeService {
 
     public ProfileEntity selectLoginProfile(HttpSession session){
         UserEntity loginUser = (UserEntity) session.getAttribute("user");
-        return  this.homeMapper.selectLoginProfile(loginUser.getEmail());
+        return this.homeMapper.selectLoginProfile(loginUser.getEmail());
     }
 
 }

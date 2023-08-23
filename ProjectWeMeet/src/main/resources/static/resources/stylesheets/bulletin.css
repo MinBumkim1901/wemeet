@@ -168,6 +168,9 @@ body {
     background-color: white;
     font-weight: bold;
     font-size: 1.5rem;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
 }
 
 .allContainer > .main-template > .content {
@@ -217,8 +220,6 @@ body {
 .likeAndReport .deleteLike:hover {
     filter: brightness(30%);
 }  /*좋아요랑 좋아요 한후 */
-
-
 
 .likeAndReport .report{
     margin-right: 5px;
@@ -478,7 +479,7 @@ body {
     align-items: center;
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: center;
 }
 .announcement > .guide > .comments > .contentBox > .answer{
     width: 100%;
@@ -548,11 +549,13 @@ body {
     height: 7rem;
     margin: 0 1rem;
 }
+
 .preview > .container > .previewContainer > .img > img{
     width: 7rem;
     height: 7rem;
     object-fit: cover;
 }
+
 .preview > .container > .previewContainer > .text{
     width: 10rem;
     height: 7rem;
@@ -625,6 +628,7 @@ body {
     display: flex;
     flex-direction: column;
 }
+
 .del {
     background-color: #5F5F5F;
     width: 100%;
@@ -637,6 +641,7 @@ body {
     margin-right: 1rem;
     width: 100%;
 }
+
 .delete-button{
 
 }
@@ -703,30 +708,42 @@ body {
 
 @media screen and (max-width: 650px){
     .allContainer{
-        width: 95%;
+        width: 90%;
+    }
+    .announcement > .guide > .comments > .contentBox > .content-write > input{
+        width: 15%;
+    }
+
+    .announcement > .guide > .comments > .contentBox > .content-write > label > input{
+        width: 80%;
     }
 }
+
 @media screen and (max-width: 680px){
     .allContainer > .header > .login > button {
         margin: 0;
     }
 }
-@media screen and (max-width: 500px){
+
+@media screen and (max-width: 500px) {
     .announcement > .guide {
-height: auto;
+        height: auto;
         display: flex;
         flex-direction: column;
         justify-content: start;
     }
-    .announcement > .guide > .guideContainer{
+
+    .announcement > .guide > .guideContainer {
         width: 95%;
         align-items: start;
         display: flex;
         flex-direction: column;
         justify-content: start;
     }
-    .announcement > .guide > .guideContainer > .map{
-        width: 100%;
+
+    .announcement > .guide > .guideContainer > .map {
+        width: 90%;
+        margin: 0 auto;
     }
 
     .announcement > .guide > .comments {
@@ -735,12 +752,19 @@ height: auto;
         flex-direction: column;
         position: relative;
     }
-    .announcement > .guide > .comments > .contentBox > .content-write > label > input{
+
+    .announcement > .guide > .comments > .contentBox > .content-write > label > input {
         width: 70%;
     }
-    .announcement > .guide > .comments > .contentBox > .content-write > input{
+
+    .announcement > .guide > .comments > .contentBox > .content-write > input {
         width: 20%;
     }
+
+    .announcement > .guide > .comments > .contentBox{
+        width: 90%;
+    }
+
 
 
 }
@@ -759,4 +783,33 @@ height: auto;
         background-color: white;
         border-radius: 15px;
     }
+
+    .allContainer > .main-template > .img-profile-title > .profile-title > .bulletin-title {
+        font-size: 1.3rem;
+    }
+
+    .allContainer > .main-template > .img-profile-title > .profile-title > .profile-img > img{
+        width: 40px;
+        height: 40px;
+    }
+
+    .announcement > .introduction > .my > .myImages > img{
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .announcement > .participant > .participantContainer > .login-after-human > .profile > span > a > img{
+        width: 3rem;
+        height: 3rem;
+    }
+
+    .announcement > .introduction > .my > .myIntroduction > .nickname{
+        font-size: 0.9rem;
+        height: 1.2rem;
+    }
+
+    .announcement > .introduction > .my > .myIntroduction > .text{
+        font-size: 0.9rem;
+    }
+
 }

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>관리자 페이지</title>
+    <link rel="stylesheet" th:href="@{/resources/stylesheets/admin/admin.css}">
+    <link rel="stylesheet" th:href="@{/resources/stylesheets/Common/footerCommon.css}">
+    <script defer th:src="@{/resources/scripts/common/search.js}"></script>
+    <script defer th:src="@{/resources/scripts/admin/admin.js}"></script>
+    <script defer th:src="@{/resources/scripts/logout.js}"></script>
+    <script th:if="${session.user.isAdmin() == false}">
+        alert('관리자가 아닙니다');
+        location.href = '/';
+    </script>
+</head>
+<body th:if="${session.user.isAdmin()}">
+<section class="layout">
+    <div class="header_wrap">
+        <h2 class="logo">
+            <a href="/">
+                <img class="icon" th:src="@{/resources/images/noticeImages/whiteLogo.png}" >
+            </a>
+        </h2>
+        <h2 class="register">
+            <a class="login" href="/qna"> 1대1 문의</a>
+            <a class="login" href="/admin"> 계정관리</a>
+        </h2>
+    </div>
+</section>
+
+<form id="main">
+    <div>
+        <h1>계정 관리</h1>
+        <table>
+            <thead>
+            <tr>
+                <th>번호</th>
+                <th>아이디</th>
+                <th>이름</th>
+                <th>전화번호</th>
+                <th>생년월일</th>
+                <th>권한</th>
+                <th>가입일</th>
+                <th>관리</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="allUser, userIndex : ${allUser}">
+                <td th:text="${(pagingModel.requestPage - 1) * pagingModel.displayEndPage + userIndex.index +1}"></td>
+                <td th:text="${allUser.getEmail()}"></td>
+                <td th:text="${allUser.getName()}"></td>
+                <td th:text="${allUser.getContact()}"></td>
+                <td th:text="${#dates.format(allUser.getBirth(), 'yyyy-MM-dd')}"></td>
+                <td th:text="${allUser.isAdmin() ? '관리자':'회원'}"></td>
+                <td th:text="${allUser.getRegisteredAt()}"></td>
+                <td><input type="submit" value="삭제" rel="delete" th:data-index="${allUser.getEmail()}"></td>
+            </tr>
+            </tbody>
+            <tbody>
+            <tr th:if="${searchResult == 0}">
+                <td>검색결과가 존재하지 않습니다</td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</form>
+
+<form id="search" method="get">
+    <ul id="pageContainer" th:if="${searchResult > 0}">
+        <li class="page" th:if="${pagingModel.requestPage > 1}">
+            <a class="link" th:href="@{'/admin' (p = ${1}, c = ${searchCriterion}, q = ${searchQuery})}">처음</a>
+        </li>
+        <li class="page" th:if="${pagingModel.requestPage > 1}">
+            <a class="link" th:href="@{'/admin' (p = ${pagingModel.requestPage - 1}, c = ${searchCriterion}, q = ${searchQuery})}">이전</a>
+        </li>
+        <li class="page" th:each="page : ${#numbers.sequence(pagingModel.displayStartPage, pagingModel.displayEndPage)}">
+            <a class="link" th:href="@{'/admin' (p = ${page}, c = ${searchCriterion}, q = ${searchQuery})}" th:text="${page}"></a>
+        </li>
+        <li class="page" th:if="${pagingModel.requestPage < pagingModel.maxPage}">
+            <a class="link" th:href="@{'/admin' (p = ${pagingModel.requestPage + 1}, c = ${searchCriterion}, q = ${searchQuery})}">다음</a>
+        </li>
+        <li class="page" th:if="${pagingModel.requestPage < pagingModel.maxPage}">
+            <a class="link" th:href="@{'/admin' (p = ${pagingModel.maxPage}, c = ${searchCriterion}, q = ${searchQuery})}">마지막</a>
+        </li>
+    </ul>
+    <section class="search-box">
+        <select class="select" name="c" id="lang">
+            <option value="email">이메일</option>
+            <option value="name">이름</option>
+        </select>
+        <input class="input"  name="q" placeholder="입력해주세요" type="text">
+        <input class="button" type="submit" value="검색">
+    </section>
+</form>
+
+
+<footer id="footer">
+    <div class="wrap">
+        <div class="grid-twin one">
+            <p class="about-info about-a-tag">고객센터</p>
+            <p class="about-info"><a class="about-a-tag" href="/notice">공지사항</a></p>
+            <p class="about-info"><a class="about-a-tag" href="/event">이벤트</a></p>
+            <p class="about-info"><a class="about-a-tag" href="/faq">자주묻는 질문</a></p>
+            <p class="about-info"><a class="about-a-tag" href="/qna">1대1 문의</a></p>
+        </div>
+        <div class="grid-twin two">
+            <p class="about-info about-a-tag">위밋 정보</p>
+            <p class="about-info"><a class="about-a-tag" href="/TermsOfService">이용약관</a></p>
+            <p class="about-info"><a class="about-a-tag" href="/Privacy-Policy">개인정보처리방침</a></p>
+        </div>
+        <div class="grid-twin big">
+            <p class="about-info about-a-tag second-info">㈜ 위밋</p>
+            <p class="about-info small-info second-info">대표 : 백성현 | 개인정보관리책임자 : 정인탁 <br>
+                이메일 : tjdgus4869@naver.com<br>
+                주소: 경기 성남시 분당구 판교 <br>
+                사업자등록번호: 123-23-12321 | 통신판매: 경기분당-12321<br>
+                운영시간: (월~일)오전 9:00~오후 6:00</p>
+        </div>
+    </div>
+</footer>
+
+
+</body>
+</html>

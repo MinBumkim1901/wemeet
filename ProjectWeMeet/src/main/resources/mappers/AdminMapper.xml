@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bsh.projectwemeet.mappers.AdminMapper">
+    <select id="selectUserAll"
+            resultType="com.bsh.projectwemeet.entities.UserEntity">
+        SELECT `email`             AS `email`,
+               `name`              AS `name`,
+               `nickname`          AS `nickname`,
+               `contact`           AS `contact`,
+               `admin_flag`        AS `isAdmin`,
+               `birth`             AS `birth`,
+               `registered_at`     AS `registeredAt`,
+               `address_postal`    AS `addressPostal`,
+               `address_primary`   AS `addressPrimary`,
+               `address_secondary` AS `addressSecondary`,
+               `gender`            AS `gender`,
+               `password`          AS `password`
+        FROM `wemeet_project`.`users`
+        ORDER BY `registeredAt`;
+    </select>
+
+    <select id="selectCount"
+            resultType="int">#결과값 int형으로 변환해서 돌려준다
+        SELECT COUNT(0) AS `count`
+        FROM `wemeet_project`.`users`
+        <where>
+            <if test='searchCriterion.equals("email")'>
+                AND `email` LIKE CONCAT('%',#{searchQuery},'%')
+            </if>
+            <if test='searchCriterion.equals("name")'>
+                AND `name` LIKE CONCAT('%',#{searchQuery},'%')
+            </if>
+        </where>
+    </select>
+
+    <select id="selectByPage"
+            resultType="com.bsh.projectwemeet.entities.UserEntity">#결과값 메모엔터티 값으로 돌려준다
+        SELECT`email` AS `email`,
+        `name` AS `name`,
+        `nickname` AS `nickname`,
+        `contact` AS `contact`,
+        `admin_flag` AS `isAdmin`,
+        `birth` AS `birth`,
+        `registered_at` AS `registeredAt`,
+        `address_postal` AS `addressPostal`,
+        `address_primary` AS `addressPrimary`,
+        `address_secondary` AS `addressSecondary`,
+        `gender` AS `gender`,
+        `password` AS `password`
+        FROM `wemeet_project`.`users`
+        <where>
+        <if test='searchCriterion.equals("email")'>
+            AND `email` LIKE CONCAT('%',#{searchQuery},'%')
+        </if>
+        <if test='searchCriterion.equals("name")'>
+            AND `name` LIKE CONCAT('%',#{searchQuery},'%')
+        </if>
+        </where>
+        ORDER BY `registeredAt`
+        LIMIT #{pagingModel.pageCount} OFFSET #{pagingModel.offset}<!--value의 이름과 같아야된다-->
+    </select>
+
+    <delete id="deleteUser">
+        DELETE
+        FROM `wemeet_project`.`users`
+        WHERE `email` = #{email}
+        LIMIT 1
+    </delete>
+</mapper>

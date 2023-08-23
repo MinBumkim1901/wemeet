@@ -150,9 +150,10 @@ public class ProfileController {
             method = RequestMethod.PATCH,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String patchResetNickname(HttpSession session, @RequestParam("infoNickname") String nickname) {
+    public String patchResetNickname(HttpSession session, @RequestParam("infoNickname") String nickname,
+                                     ProfileEntity profile) {
         UserEntity user = (UserEntity) session.getAttribute("user");
-        ModifyPasswordResult result = this.profileService.resetNickname(nickname, user, session);
+        ModifyPasswordResult result = this.profileService.resetNickname(nickname, user, session,profile);
 
         JSONObject responseObject = new JSONObject() {{
             put("result", result.name().toLowerCase());

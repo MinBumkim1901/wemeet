@@ -2,7 +2,9 @@ package com.bsh.projectwemeet.controllers;
 
 import com.bsh.projectwemeet.entities.*;
 import com.bsh.projectwemeet.enums.PatchNoticeViewResult;
+import com.bsh.projectwemeet.models.PagingModel;
 import com.bsh.projectwemeet.services.EventService;
+import com.bsh.projectwemeet.services.FaqService;
 import org.json.JSONObject;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -33,31 +35,45 @@ public class EventController {
     @RequestMapping(value = "event",
             method = RequestMethod.GET,
             produces = MediaType.TEXT_HTML_VALUE)
-    public ModelAndView getEvent(HttpSession session){
-        ModelAndView modelAndView = new ModelAndView("home/Event/event");
+    public ModelAndView getEvent(@RequestParam(value = "p", defaultValue = "1",required = false)int requestPage,
+                                 @RequestParam(value = "q", defaultValue = "", required = false) String searchQuery,
+                                 HttpSession session){
+        ModelAndView modelAndView = new ModelAndView("home/event/event");
+        int searchResultCount = this.eventService.getCount(searchQuery);
         UserEntity user = this.eventService.CheckUser(session);
-        EventEntity[] eventArticle = this.eventService.getCountArticle();
+
+        PagingModel pagingModel = new PagingModel(
+                EventService.PAGE_COUNT,
+                this.eventService.getCount(searchQuery),
+                requestPage); //객체화
+
+        EventEntity[] event = this.eventService.getByPage(pagingModel,searchQuery);
+
+
         modelAndView.addObject("user", user);
-        modelAndView.addObject("eventArticle",eventArticle);
+        modelAndView.addObject("event",event);
+        modelAndView.addObject("pagingModel",pagingModel);
+        modelAndView.addObject("searchQuery",searchQuery);
+        modelAndView.addObject("searchResult",searchResultCount);
         return modelAndView;
     } //메인 홈 주소
 
     @RequestMapping(value = "eventWriter", method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
     public ModelAndView getNoticeWriter() {
-        ModelAndView modelAndView = new ModelAndView("home/Event/event-Write");
+        ModelAndView modelAndView = new ModelAndView("home/event/eventWrite");
         return modelAndView;
     }
 
     @RequestMapping(value = "eventWriter", method = RequestMethod.POST, produces = MediaType.TEXT_HTML_VALUE)
     @ResponseBody
-    public ModelAndView postNoticeWriter(HttpServletRequest request, EventEntity eventWrite) {
-        boolean result = this.eventService.putEventWriter(request, eventWrite);
-        ModelAndView modelAndView = new ModelAndView("home/Event/event-Write");
+    public ModelAndView postNoticeWriter(HttpSession session,HttpServletRequest request, EventEntity eventWrite) {
+        boolean result = this.eventService.putEventWriter(session,request, eventWrite);
+        ModelAndView modelAndView = new ModelAndView("home/event/eventWrite");
         if (result) {
 //          성공적으로 작성되었다면 noticeView로 전환
             modelAndView.setViewName("redirect:/eventView?index=" + eventWrite.getIndex());
         } else {
-            modelAndView.setViewName("home/Event/event-Write");
+            modelAndView.setViewName("home/event/eventWrite");
             modelAndView.addObject("result", result);
         }
         return modelAndView;
@@ -67,7 +83,7 @@ public class EventController {
             method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
     public ModelAndView getRead(@RequestParam(value = "index") int index, HttpSession session) {
         UserEntity loginUser = (UserEntity) session.getAttribute("user");
-        ModelAndView modelAndView = new ModelAndView("home/Event/event-View");
+        ModelAndView modelAndView = new ModelAndView("home/event/eventView");
         EventEntity article = this.eventService.readArticle(index);
         modelAndView.addObject("article", article);
         modelAndView.addObject("user", loginUser);
@@ -122,9 +138,8 @@ public class EventController {
             method = RequestMethod.GET)
     public ModelAndView patchNotice(@RequestParam(value = "index") int index, HttpSession session) {
         EventEntity article = eventService.getPatchIndexArticle(index, session);
-        ModelAndView modelAndView = new ModelAndView("home/Event/event-Patch");
+        ModelAndView modelAndView = new ModelAndView("home/event/eventPatch");
         modelAndView.addObject("article", article);
-
         return modelAndView;
     }
 

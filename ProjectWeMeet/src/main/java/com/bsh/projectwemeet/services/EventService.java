@@ -3,7 +3,7 @@ package com.bsh.projectwemeet.services;
 import com.bsh.projectwemeet.entities.*;
 import com.bsh.projectwemeet.enums.PatchNoticeViewResult;
 import com.bsh.projectwemeet.mappers.EventMapper;
-import com.bsh.projectwemeet.mappers.NoticeSeeMapper;
+import com.bsh.projectwemeet.models.PagingModel;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -14,7 +14,11 @@ import java.util.Date;
 
 @Service
 public class EventService {
+
     private final EventMapper eventMapper;
+
+    public static final int PAGE_COUNT = 6; //최대페이지 6개로 설정
+
 
     public EventService(EventMapper eventMapper) {
         this.eventMapper = eventMapper;
@@ -31,18 +35,27 @@ public class EventService {
         return check;
     }
 
-    public boolean putEventWriter(HttpServletRequest request, EventEntity event) {
+    public boolean putEventWriter(HttpSession session,HttpServletRequest request, EventEntity event) {
+        UserEntity user = (UserEntity) session.getAttribute("user");
+
         event.setCreatedAt(new Date())
                 .setClientIp(request.getRemoteAddr())
-                .setClientUa(request.getHeader("User-Agent"));
+                .setClientUa(request.getHeader("User-Agent"))
+                .setNickname(user.getNickname());
         return this.eventMapper.insertArticle(event) > 0
                 ? true
                 : false;
     }
 
-    public EventEntity[] getCountArticle() {
-        return this.eventMapper.selectCountArticle();
-    }
+    public int getCount(String searchQuery){
+        return this.eventMapper.selectEventPagingByCount(searchQuery);
+    } //사용자의 세션 관련해 Qna 목록 확인 가능
+
+    public EventEntity[] getByPage(PagingModel pagingModel, String searchQuery) {
+        EventEntity[] event = this.eventMapper.selectEventPaging(pagingModel,searchQuery);
+        return event;
+    } //사용자의 세션 관련해 Qna 목록 확인 가능
+
 
     public EventEntity readArticle(int index) {
         EventEntity article = this.eventMapper.selectArticleByIndex(index);
@@ -80,7 +93,7 @@ public class EventService {
     //    수정한다면 원래 있던 내용들을 그대로 표시하기
     public EventEntity getPatchIndexArticle(int index, HttpSession session) {
         UserEntity loginUser = (UserEntity) session.getAttribute("user");
-        if (loginUser.isAdmin() != true) {
+        if (!loginUser.isAdmin()) {
             return null; //사용자가 관리자가 아니라면
         }
         return this.eventMapper.selectArticleByPatchIndex(index);

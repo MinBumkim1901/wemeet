@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>비밀번호 찾기</title>
     <link rel="stylesheet" th:href="@{/resources/stylesheets/recoverEmail.css}">
     <link rel="stylesheet" th:href="@{/resources/stylesheets/recoverPassword.css}">
     <link rel="icon" th:href="@{/resources/images/favicon/favicon.png}" type="image/x-icon">
     <script defer th:src="@{/resources/scripts/recoverPassword.js}"></script>
     <script defer th:src="@{/resources/scripts/commonDialog.js}"></script>
-
 </head>
+
 <body>
 <div id="dialogCover"></div>
 <div id="dialogLayer">
     <span class="title" rel="title"></span>
     <span class="content" rel="content"></span>
-
     <div class="button-container">
         <a class="button cancel" href="#" rel="cancel">취소</a>
         <a class="button confirm" href="#" rel="confirm">확인</a>

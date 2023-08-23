@@ -351,8 +351,8 @@ popup['changeNickname'].onclick = e => {
     }
     const xhr = new XMLHttpRequest();
     const formData = new FormData();
-    formData.append('infoNickname', popup['infoNickname'].value);
-    xhr.open('PATCH', `./resetNickname`);
+    formData.append('nickname', popup['infoNickname'].value);
+    xhr.open('PATCH', `./resetNickname?infoNickname=${popup['infoNickname'].value}`);
     xhr.onreadystatechange = () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status >= 200 && xhr.status < 300) {

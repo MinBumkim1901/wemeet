@@ -16,7 +16,7 @@
             keyColumn="index"
             keyProperty="index"
             parameterType="com.bsh.projectwemeet.entities.ProfileEntity">
-        INSERT INTO `wemeet_project`.`mypages` (email, profile_thumbnail, profile_thumbnail_mime, introduce_text, nickname)
+        INSERT INTO `wemeet_project`.`mypage` (email, profile_thumbnail, profile_thumbnail_mime, introduce_text, nickname)
         VALUES (#{email},
                 #{profileThumbnail},
                 #{profileThumbnailMime},
@@ -44,7 +44,7 @@
                `email` AS `email`,
                `profile_thumbnail` AS `profileThumbnail`,
                `profile_thumbnail_mime` AS `profileThumbnailMime`
-        FROM `wemeet_project`.`mypages`
+        FROM `wemeet_project`.`mypage`
         WHERE `email` = #{email}
     </select>
 
@@ -112,13 +112,13 @@
     </select>
 
     <select id="selectThumbnail"
-    resultType="com.bsh.projectwemeet.entities.ProfileEntity">
+            resultType="com.bsh.projectwemeet.entities.ProfileEntity">
         SELECT `index` AS `index`,
                `email` AS `email`,
                `profile_thumbnail` AS `profileThumbnail`,
                `profile_thumbnail_mime` AS `profileThumbnailMime`,
                `introduce_text` AS `introduceText`
-        FROM `wemeet_project`.`mypages`
+        FROM `wemeet_project`.`mypage`
         WHERE `email` = #{email}
         LIMIT 1
     </select>
@@ -165,7 +165,7 @@
     resultType="com.bsh.projectwemeet.entities.ArticleEntity">
         SELECT `index` AS `index`,
                `thumbnail` AS `thumbnail`,
-               `thumbnail_mime` AS `thumbnailMime`
+               `thumbnail_mime` AS `thumbnailMime`,
         FROM `wemeet_project`.`articles`
         WHERE `index` = #{index}
         LIMIT 1
@@ -212,15 +212,23 @@
 
     <update id="updateContent"
             parameterType="com.bsh.projectwemeet.entities.ProfileEntity">
-        UPDATE `wemeet_project`.`mypages`
+        UPDATE `wemeet_project`.`mypage`
         SET `introduce_text` = #{introduceText}
         WHERE `email` = #{email}
         LIMIT 1
     </update>
 
-    <update id="updateNickname"
+    <update id="updateUserNickname"
             parameterType="com.bsh.projectwemeet.entities.UserEntity">
         UPDATE `wemeet_project`.`users`
+        SET `nickname` = #{nickname}
+        WHERE `email` = #{email}
+        LIMIT 1
+    </update>
+
+    <update id="updatePageNickname"
+            parameterType="com.bsh.projectwemeet.entities.ProfileEntity">
+        UPDATE `wemeet_project`.`mypage`
         SET `nickname` = #{nickname}
         WHERE `email` = #{email}
         LIMIT 1
@@ -246,7 +254,7 @@
 
     <update id="updateThumbnail"
             parameterType="com.bsh.projectwemeet.entities.ProfileEntity">
-        UPDATE `wemeet_project`.`mypages`
+        UPDATE `wemeet_project`.`mypage`
         SET `profile_thumbnail` = #{profileThumbnail},
             `profile_thumbnail_mime` = #{profileThumbnailMime}
         WHERE `email` = #{email}
@@ -256,7 +264,7 @@
 
     <update id="deleteThumbnail"
     parameterType="com.bsh.projectwemeet.entities.ProfileEntity">
-        UPDATE `wemeet_project`.`mypages`
+        UPDATE `wemeet_project`.`mypage`
         SET `profile_thumbnail` = #{profileThumbnail},
             `profile_thumbnail_mime` = #{profileThumbnailMime}
         WHERE `email` = #{email}

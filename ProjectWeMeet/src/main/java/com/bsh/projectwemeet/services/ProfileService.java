@@ -62,9 +62,7 @@ public class ProfileService {
         UserEntity user = profileMapper.selectNickName(nickname);
         ProfileEntity profile = profileMapper.selectThumbnail(user.getEmail());
 
-        return profile == null
-                ? null
-                : profile;
+        return profile;
     }
 
 
@@ -180,18 +178,23 @@ public class ProfileService {
                 : VerifyRegisterContactCodeResult.FAILURE;
     }
 
-    public ModifyPasswordResult resetNickname(String nickname, UserEntity user, HttpSession session) {
-        if (!(session.getAttribute("user") instanceof UserEntity)) {
-            return ModifyPasswordResult.FAILURE;
-        }
-        UserEntity signedUser = (UserEntity) session.getAttribute("user");
+    public ModifyPasswordResult resetNickname(String nickname, UserEntity user, HttpSession session,
+                                              ProfileEntity profile) {
+//        if (!(session.getAttribute("user") instanceof UserEntity)) {
+//            return ModifyPasswordResult.FAILURE;
+//        }
+//        UserEntity signedUser = (UserEntity) session.getAttribute("user");
+//
+//        if (nickname.equals(signedUser.getNickname())) {
+//            return ModifyPasswordResult.FAILURE_PASSWORD_MISMATCH;
+//        }
 
-        if (nickname.equals(signedUser.getNickname())) {
-            return ModifyPasswordResult.FAILURE_PASSWORD_MISMATCH;
-        }
         user.setNickname(nickname);
-        return this.profileMapper.updateNickname(user) > 0
-                ? ModifyPasswordResult.SUCCESS : ModifyPasswordResult.FAILURE;
+        profile.setNickname(nickname);
+
+        return this.profileMapper.updateUserNickname(user) > 0 && this.profileMapper.updatePageNickname(profile) > 0
+                ? ModifyPasswordResult.SUCCESS
+                : ModifyPasswordResult.FAILURE;
     }
 
     //비밀번호 변경

@@ -94,7 +94,7 @@
                `profile_thumbnail`      AS `profileThumbnail`,
                `profile_thumbnail_mime` AS `profileThumbnailMime`,
                `introduce_text`         AS `introduceText`
-        FROM `wemeet_project`.`mypages`
+        FROM `wemeet_project`.`mypage`
         WHERE `email` = #{email}
         LIMIT 1
     </select>

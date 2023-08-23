@@ -96,10 +96,12 @@
     aspect-ratio: 1/1;
     margin-bottom: 1rem;
     -webkit-user-drag: none;
+    opacity: 0;
 }
 
 #_loading > ._text {
     font-size: 1.125rem;
+    opacity: 0;
 }
 
 #_loading.visible {

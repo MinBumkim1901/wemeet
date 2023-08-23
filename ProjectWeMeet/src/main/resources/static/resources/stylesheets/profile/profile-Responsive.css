@@ -1,0 +1,249 @@
+@media screen and (max-width: 1500px) {
+
+    #postContainer > .article-box-grid {
+        padding: 1rem;
+    }
+
+    #postContainer > .article-box-grid > .article-list {
+        width: 12rem;
+        height: 15.5rem;
+    }
+
+    #postContainer > .article-box-grid > .article-list > .myArticleLink > span {
+        width: 11rem;
+    }
+
+    #postContainer > .article-box-grid > .article-list > .myArticleLink > .article-thumbnail {
+        width: 11rem;
+        height: 11rem;
+    }
+
+}
+
+@media screen and (max-width: 1300px) {
+    #postContainer > .article-box-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #postContainer > .article-box-grid > .article-list {
+        height: 18rem;
+    }
+
+    #postContainer > .article-box-grid > .article-list > .myArticleLink > span {
+        width: 13rem;
+    }
+
+    /*width보다 넓이 크게 글씨 쓰면 가려짐*/
+    #postContainer > .article-box-grid > .article-list > .myArticleLink > .article-thumbnail {
+        width: 13.5rem;
+        height: 13.5rem;
+    }
+
+    #popup.visible {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+}
+
+@media screen and (max-width: 950px) {
+    /*---- 게시물 표시---------*/
+    #postContainer > .article-box-grid {
+        padding: 1rem;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #postContainer > .article-box-grid > .article-list {
+        width: 10rem;
+        height: 14rem;
+    }
+
+
+    #postContainer > .article-box-grid > .article-list > .myArticleLink > span {
+        width: 10rem;
+        font-size: 1.1rem;
+    }
+
+    /*width보다 넓이 크게 글씨 쓰면 가려짐*/
+
+    #postContainer > .article-box-grid > .article-list > .myArticleLink > .article-thumbnail {
+        width: 10rem;
+        height: 10rem;
+    }
+
+
+    #postContainer > .article-box-grid > .article-list > .likeAndReport > .likeImage > span {
+        font-size: 0.6rem;
+    }
+
+    #postContainer > .article-box-grid > .article-list > .likeAndReport > .likeImage > .Like, .Report {
+        width: 1.1rem;
+        margin: 0.1rem;
+    }
+
+    #postContainer > .article-box-grid > .article-list > .likeAndReport > .HashTag > span {
+        font-size: 0.6rem;
+    }
+
+
+}
+
+@media screen and (max-width: 750px) {
+    /*---- 게시물 표시---------*/
+    #postContainer > .article-box-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    #postContainer > span > .article-post {
+        font-size: 1.1rem;
+    }
+
+    #postContainer > .article-box-grid > .article-list {
+        width: 12rem;
+        height: 16rem;
+    }
+
+
+    #postContainer > .article-box-grid > .article-list > .myArticleLink > span {
+        width: 11rem;
+    }
+
+    #postContainer > .article-box-grid > .article-list > .myArticleLink > .article-thumbnail {
+        width: 12rem;
+        height: 12rem;
+    }
+
+
+    #postContainer > .article-box-grid > .article-list > .likeAndReport > .likeImage > span {
+        font-size: 0.8rem;
+    }
+
+
+    #popup.step-2 > .popup-content.step-2 {
+        width: 27.5rem;
+    }
+
+    #popup.step-2 > .popup-content.step-2 > .__body > .contact-container > .object > ._object-box > ._object-input {
+        width: 10rem;
+    }
+
+    #popup.step-2 > .popup-content.step-2 > .__body > .contact-container > .object > .new-contact-container > .multi-container > ._object-box > ._object-input {
+        width: 10rem;
+    }
+
+    #popup.step-2 > .popup-content.step-2 > .__body > .address-container > .object > .multi-container > ._object-label > ._object-input {
+        width: 12rem;
+    }
+
+    #popup.step-2 > .popup-content.step-2 > .__body > .address-container > .object > ._object-box > ._object-input {
+        width: 12rem;
+    }
+
+}
+
+@media screen and (max-width: 520px) {
+    #popup.step-2 > .popup-content.step-2{
+        width: 84.62%;
+    }
+}
+
+@media screen and (max-width: 450px) {
+
+    p{
+        font-size: 0.8rem;
+        white-space: nowrap;
+        padding: 0.3rem;
+    }
+
+    #popup.step-2 > .popup-content.step-2 > .__body > .address-container > .object > .multi-container > ._object-label > ._object-input{
+        width: 80%;
+    }
+
+    #popup.step-2 > .popup-content.step-2 > .__body > .address-container > .object > ._object-box > ._object-input{
+        width: 80%;
+    }
+
+    #popup.step-2 > .popup-content.step-2 > .__body > .address-container > .object > ._object-box > ._object-input{
+        width: 80%;
+    }
+
+
+
+    #mainContainer > .left-profile > .thumbnail > .default {
+        width: 4rem;
+        height: 4rem;
+    }
+
+    #mainContainer > .left-profile > .thumbnail > .pencil {
+        background-color: white;
+        border-radius: 50%;
+        width: 1.75rem;
+        height: 1.75rem;
+        position: relative;
+        box-shadow: 1px 1px 2px 0 #888;
+        left: 25px;
+        bottom: 30px;
+    }
+
+    #postContainer > span > .article-post {
+        font-size: 1.1rem;
+    }
+
+    #postContainer > .article-box-grid > .article-list {
+        width: 9rem;
+        height: 12.5rem;
+    }
+
+
+    #postContainer > .article-box-grid > .article-list > .myArticleLink > span {
+        width: 9rem;
+    }
+
+    #postContainer > .article-box-grid > .article-list > .myArticleLink > .article-thumbnail {
+        width: 9rem;
+        height: 9rem;
+    }
+
+
+    #postContainer > .article-box-grid > .article-list > .likeAndReport > .likeImage > span {
+        font-size: 0.7rem;
+    }
+}
+
+@media screen and (max-width: 365px) {
+    #popup.step-2 > .popup-content.step-2 > .__body > .nickname-container > .object > ._object-box > ._object-input{
+        width: 82.19%;
+    }
+
+    #popup.step-2 > .popup-content.step-2 > .__body > .new-password-container > .object > ._object-box > ._object-input{
+        width: 82.19%;
+    }
+
+
+    #postContainer > span > .article-post {
+        font-size: 1.1rem;
+    }
+
+    #postContainer > .article-box-grid > .article-list {
+        width: 8rem;
+        height: 11.5rem;
+    }
+
+
+    #postContainer > .article-box-grid > .article-list > .myArticleLink > span {
+        width: 7rem;
+    }
+
+    #postContainer > .article-box-grid > .article-list > .myArticleLink > .article-thumbnail {
+        width: 8rem;
+        height: 8rem;
+    }
+
+
+    #postContainer > .article-box-grid > .article-list > .likeAndReport > .HashTag >.hash {
+        display: none;
+    }
+}
+
+
+

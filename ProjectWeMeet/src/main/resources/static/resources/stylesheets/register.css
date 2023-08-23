@@ -18,7 +18,7 @@ body {
 
 /*전체길이*/
 .container {
-    width: 50%;
+    width: 70%;
     height: 100%;
 }
 
@@ -29,7 +29,6 @@ body {
     max-width: 500px;
 
     margin: 0 auto;
-    padding: 1rem;
 
     display: flex;
     flex-direction: column;
@@ -95,12 +94,14 @@ body {
 
 /*화면 전환을 위한 display 값들*/
 .step-1 {
-    display: block;
+    /*display: block;*/
+    display: none;
+
 }
 
 .step-2 {
-    display: none;
-    margin-top: 2rem;
+    display: block;
+    margin: 0 auto;
 }
 
 .step-3 {
@@ -393,87 +394,40 @@ a.link:visited {
 
 /*step-1*/
 @media (max-width: 680px) {
-    html {
-        font-size: 10px;
-    }
 
-    .title{
-        font-size: 1rem;
+    #registerForm > .inner > .step-1 > .all > .check-container > .title {
+        font-size: 1.3rem;
     }
 
     #registerForm > .inner > .step-1 > .service > .term_list > .term_item > .check-container > .title {
-        font-size: 1rem;
+        font-size: 1.3rem;
     }
 
-    .term_box {
-        font-size: 7px;
-    }
-
-    .term_box_small {
-        font-size: 7px;
-    }
-
-    .logo {
-        width: 10rem;
-    }
-
-    #registerForm > .inner > .step-1 > .all > .text {
-
-    }
 }
 
 @media (max-width: 500px) {
-    html {
-        font-size: 7px;
+
+    .logo{
+        width: 45%;
     }
 
     .title{
-        font-size: 0.7rem;
+        font-size: 1rem;
     }
 
     #registerForm > .inner > .step-1 > .service > .term_list > .term_item > .check-container > .title {
-        font-size: 0.7rem;
+        font-size: 1rem;
     }
 
-    .term_box {
-        font-size: 4px;
-    }
-
-    .term_box_small {
-        font-size: 4px;
-    }
-
-    #registerForm > .inner > .step-1 > .all > .text {
-
-    }
 }
 
 @media (max-width: 367px) {
-    html {
-        font-size: 4px;
-    }
-
     .title{
-        font-size: 0.23rem;
+        font-size: 0.9rem;
     }
 
     #registerForm > .inner > .step-1 > .service > .term_list > .term_item > .check-container > .title {
-        font-size: 0.5px;
-    }
-    p{
-        font-size: 0.25rem;
-    }
-
-    .term_box {
-        font-size: 2px;
-    }
-
-    .term_box_small {
-        font-size: 2px;
-    }
-
-    #registerForm > .inner > .step-1 > .all > .text {
-        font-size: 3px;
+        font-size: 0.9rem;
     }
 }
 
@@ -481,45 +435,17 @@ a.link:visited {
 /*step-2*/
 
 @media (max-width: 878px) {
-    /* Placeholder의 글꼴 크기 조정 */
-    ::placeholder {
-        font-size: 7px; /* 원하는 글꼴 크기로 설정 */
-    }
-
     #registerForm > .inner > .step-2 > .sign > .button-container > .complete{
         max-width: 350px;
     }
 
     #registerForm > .inner > .step-2 > .sign > .form_list{
-        max-width: 350px;
+        max-width: 380px;
     }
-
-    .input {
-        font-size: 7px;
-    }
-
-    #registerForm > .inner > .step-2 > .sign > .button-container > .complete {
-
-        font-size: 14px;
-
-    }
-
-    .form_item > label {
-        font-size: 10px;
-    }
-
-    .btn {
-        font-size: 14px;
-    }
-
 }
 
 
 @media (max-width: 620px) {
-    /* Placeholder의 글꼴 크기 조정 */
-    ::placeholder {
-        font-size: 5px; /* 원하는 글꼴 크기로 설정 */
-    }
 
     #registerForm > .inner > .step-2 > .sign > .button-container > .complete{
         max-width: 300px;
@@ -527,10 +453,6 @@ a.link:visited {
 
     #registerForm > .inner > .step-2 > .sign > .form_list{
         max-width: 300px;
-    }
-
-    .input {
-        font-size: 5px;
     }
 
     #registerForm > .inner > .step-2 > .sign > .button-container > .complete {
@@ -539,18 +461,78 @@ a.link:visited {
 
     }
 
-    .form_item > label {
-        font-size: 8px;
-    }
-
-    .btn {
-        font-size: 9px;
-    }
     #registerForm > .inner > .step-2 > .sign > .form_list > .form_item{
         height: 40px;
     }
 
 }
+
+
+@media (max-width: 470px) {
+
+    #registerForm > .inner > .step-2 > .sign > .button-container > .complete{
+        max-width: 260px;
+    }
+
+    #registerForm > .inner > .step-2 > .sign > .form_list{
+        max-width: 260px;
+    }
+
+    #registerForm > .inner > .step-2 > .sign > .button-container > .complete {
+        font-size: 12px;
+    }
+
+    ::placeholder {
+        font-size: 0.9rem; /* 원하는 글꼴 크기로 설정 */
+    }
+
+    .input {
+        font-size: 1rem;
+    }
+
+    .form_item > label {
+        font-size: 1rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+    }
+
+}
+
+@media (max-width: 300px) {
+
+    #registerForm > .inner > .step-2 > .sign > .button-container > .complete{
+        max-width: 200px;
+    }
+
+    #registerForm > .inner > .step-2 > .sign > .form_list{
+        max-width: 200px;
+    }
+
+    #registerForm > .inner > .step-2 > .sign > .button-container > .complete {
+        font-size: 12px;
+    }
+
+    ::placeholder {
+        font-size: 0.9rem; /* 원하는 글꼴 크기로 설정 */
+    }
+
+    .input {
+        font-size: 1rem;
+    }
+
+    .form_item > label {
+        font-size: 1rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+    }
+
+}
+
+
 
 /*step-3*/
 @media (max-width: 710px){

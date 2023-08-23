@@ -10,8 +10,8 @@
             keyColumn="index"
             parameterType="com.bsh.projectwemeet.entities.EventEntity">
         INSERT INTO `wemeet_project`.`events_articles`
-            (title, content, created_at, client_ip, client_ua)
-        VALUES (#{title}, #{content}, #{createdAt}, #{clientIp}, #{clientUa})
+            (title, content, created_at, client_ip, client_ua,nickname)
+        VALUES (#{title}, #{content}, #{createdAt}, #{clientIp}, #{clientUa},#{nickname})
     </insert>
 
     <insert id="insertImage"
@@ -41,6 +41,31 @@
         LIMIT 1
     </select>
 
+    <select id="selectEventPagingByCount"
+            resultType="int">#결과값 int형으로 변환해서 돌려준다
+        SELECT COUNT(0) AS `count`
+        FROM `wemeet_project`.`events_articles`
+        <where>
+            AND `title` LIKE CONCAT('%',#{searchQuery},'%')
+        </where>
+    </select>
+
+    <select id="selectEventPaging"
+            resultType="com.bsh.projectwemeet.entities.EventEntity">#결과값 메모엔터티 값으로 돌려준다
+        SELECT`index` AS `index`,
+        `title` AS `title`,
+        `content` AS `content`,
+        `created_at` AS `createdAt`,
+        `client_ip` AS `clientIp`,
+        `client_ua` AS `clientUa`
+        FROM `wemeet_project`.`events_articles`
+        <where>
+            `title` LIKE CONCAT('%',#{searchQuery},'%')
+        </where>
+        ORDER BY `index` DESC
+        LIMIT #{pagingModel.pageCount} OFFSET #{pagingModel.offset}<!--value의 이름과 같아야된다-->
+    </select>
+
     <select id="selectCountArticle"
             resultType="com.bsh.projectwemeet.entities.EventEntity">
         SELECT `index` AS `index`,
@@ -62,7 +87,8 @@
                `content`    AS `content`,
                `created_at` AS `createdAt`,
                `client_ip`  AS clientIp,
-               `client_ua`  AS clientUa
+               `client_ua`  AS clientUa,
+               `nickname` AS nickname
         FROM `wemeet_project`.`events_articles`
         WHERE `index` = #{index}
         LIMIT 1

@@ -85,3 +85,27 @@
 #dialogLayer > .button-container > .button + .button {
     border-left: 0.0625rem solid #e0e2e4;
 }
+
+@media screen and (max-width: 350px) {
+    #dialogLayer {
+        top: 50%;
+        left: 50%;
+        transform: scale(90%) translate(-50%, -50%);
+        transition-duration: 350ms;
+        transition-property: opacity, transform;
+        transition-timing-function: ease;
+        z-index: 9;
+        width: 15rem;
+        border-radius: 0.5rem;
+        /*box-shadow: 0 0 1rem 0.0625rem #00000060;*/
+        overflow: hidden;
+        opacity: 0;
+        pointer-events: none;
+        position: fixed;
+
+        align-items: stretch;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+}

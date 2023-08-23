@@ -8,16 +8,8 @@
     <title>프로필</title>
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css}"/>
-    <link rel="stylesheet" th:href="@{/resources/stylesheets/profile/profile.css}"
-          media="screen and (min-width:1501px)">
-    <link rel="stylesheet" th:href="@{/resources/stylesheets/profile/profile-1500px.css}"
-          media="screen and (max-width: 1500px) and (min-width: 1350px)">
-    <link rel="stylesheet" th:href="@{/resources/stylesheets/profile/profile-1300px.css}"
-          media="screen and (max-width:1349px) and (min-width: 1080px)">
-    <link rel="stylesheet" th:href="@{/resources/stylesheets/profile/profile-950px.css}"
-          media="screen and (max-width:1079px) and (min-width: 800px)">
-    <link rel="stylesheet" th:href="@{/resources/stylesheets/profile/profile-750px.css}"
-          media="screen and (max-width: 799px)">
+    <link rel="stylesheet" th:href="@{/resources/stylesheets/profile/profile.css}">
+    <link rel="stylesheet" th:href="@{/resources/stylesheets/profile/profile-Responsive.css}">
     <link rel="stylesheet" th:href="@{/resources/stylesheets/profile/profileCommon.css}">
     <script defer th:src="@{/resources/scripts/profile.js}"></script>
     <script defer th:src="@{/resources/scripts/common.js}"></script>
@@ -225,19 +217,28 @@
     </div>
 </form>
 
+<div class="post-container" id="not-post" th:if="${#lists.isEmpty(article)}">
+    <div class="not-article" th:if="${#lists.isEmpty(article)}">
+        <div class="not-list" >
+            게시물을 작성해주세요
+        </div>
+    </div>
+</div>
 
-<div class="post-container" id="postContainer">
+
+
+<div class="post-container" id="postContainer" th:if="${not #lists.isEmpty(article)}">
     <span>
         <span class="article-post">
             <span class="posts">참여한 게시물</span>
          </span>
     </span>
-    <div class="article-box-grid"  >
-        <div class="article-list" th:each="article : ${article}">
+    <div class="article-box-grid">
+        <div class="article-list"  th:each="article : ${article}">
             <a class="myArticleLink" th:href="@{/article/read(index=${article.getIndex()})}">
                 <span th:text="${article.getTitle()}"></span>
                 <div class="article-thumbnail">
-                    <img class="thumbnail" th:src="@{article/image(index=${article.getIndex()})}" alt="">
+                    <img class="thumbnail" th:src="@{/article/image(index=${article.getIndex()})}" alt="">
                 </div>
             </a>
             <div class="likeAndReport">
@@ -249,7 +250,7 @@
                 </span>
                 <span class="HashTag">
                      <span th:text="${article.getCategory()}"></span>
-                    <span th:if="${article.getHashtag() != null}" th:text="${article.getHashtag()}"></span>
+                    <span class="hash" th:if="${article.getHashtag() != null}" th:text="${article.getHashtag()}"></span>
                 </span>
             </div>
         </div>

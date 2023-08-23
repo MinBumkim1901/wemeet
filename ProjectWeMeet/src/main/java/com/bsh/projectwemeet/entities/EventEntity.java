@@ -10,6 +10,16 @@ public class EventEntity {
     private Date createdAt;
     private String clientIp;
     private String clientUa;
+    private String nickname;
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public EventEntity setNickname(String nickname) {
+        this.nickname = nickname;
+        return this;
+    }
 
     @Override
     public boolean equals(Object o) {
