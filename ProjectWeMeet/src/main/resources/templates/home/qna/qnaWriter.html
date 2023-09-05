@@ -8,7 +8,8 @@
     <title>Qna 작성</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <link rel="stylesheet" th:href="@{/resources/stylesheets/qna/qnaWriter.css}">
-    <link rel="stylesheet" th:href="@{/resources/stylesheets/Common/footerCommon.css}">
+    <link rel="icon" th:href="@{/resources/images/favicon/favicon.png}">
+    <link rel="stylesheet" th:href="@{/resources/stylesheets/commonFooter/footerCommon.css}">
     <script defer th:src="@{/resources/scripts/qna/qnaWrite.js}"></script>
 </head>
 <body>
@@ -72,6 +73,10 @@
             </td>
         </tr>
     </table>
+    <div class="button-menu">
+        <input class="send" type="submit" value="작성">
+        <button class="cancel"><a href="/qna">취소</a></button>
+    </div>
 </form>
 
 <form id="qnaWriterS" class="notice" method="post">

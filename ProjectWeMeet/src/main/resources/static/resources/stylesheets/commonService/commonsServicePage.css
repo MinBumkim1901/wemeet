@@ -1,0 +1,75 @@
+#search{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#pageContainer {
+    list-style-type: none;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#pageContainer > .page {
+    user-select: none;
+}
+
+#pageContainer > .page > .link {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    white-space: nowrap;
+    justify-content: center;
+    padding: 0.5rem;
+    text-decoration: none;
+    background-color: #FB6161;
+    color: white;
+    margin: 0.09rem;
+    border-radius: 0.3rem;
+    font-weight: 450;
+}
+
+#pageContainer > .page > .link:hover {
+    filter: grayscale(20%); /* 회색 필터 적용 */
+}
+
+.search-box {
+    margin-bottom: 3rem;
+}
+
+.search-box > .input {
+    width: 130px;
+    height: 28px;
+    border: 1px solid #ddd;
+    padding: 0.2rem;
+    border-radius: 0.3rem;
+}
+
+.search-box > .select {
+    border: 1px solid #ddd;
+    width: 80px;
+    height: 33px;
+    border-radius: 0.2rem;
+}
+
+.search-box > .input::placeholder {
+    color: #999; /* 원하는 색상으로 변경해주세요 */
+}
+
+.search-box >  .button {
+    background-color: #FB6161;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 0.2rem;
+    color: #fff;
+    font-weight: 500;
+}
+
+.search-box >  .button:hover {
+    cursor: pointer;
+    filter: brightness(90%); /* 밝기 조절로 어두운 효과 적용 */
+}

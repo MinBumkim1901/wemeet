@@ -47,75 +47,68 @@ header > a > img {
     height: 2rem;
 }
 
-#notice-writer > table {
+form > table {
     border-collapse: collapse;
     border: 1px solid #eaeaea;
 }
 
-@media screen and (min-width: 1091px) {
 
-    .ck.ck-editor {
-        min-width: 900px;
-    }
+.ck.ck-editor {
+    max-width: 900px;
+}
 
-    .ck-editor__editable {
-        height: 30rem;
-    }
+.ck-editor__editable {
+    height: 30rem;
+}
 
-    #notice-writer > h1 {
-        margin: 0rem 0 2rem 0.1rem;
-    }
+form > h1 {
+    margin: 0rem 0 2rem 0.1rem;
+}
 
-    tr > .textInput {
-        padding: 0.8rem;
-    }
-
-
-    tr > .textInput > .notice-title {
-        width: 35rem;
-        padding: 0.5rem;
-        border: 1px solid #ccced1;
-    }
+tr > .textInput {
+    padding: 0.8rem;
+}
 
 
-    tr > .client-voice {
-        padding: 0.8rem;
-    }
+tr > .textInput > .notice-title {
+    width: 35rem;
+    padding: 0.5rem;
+    border: 1px solid #ccced1;
+}
 
-    #notice-writer > table > tr, tr > .title, .content {
-        text-align: center;
-        padding: 1.5rem;
-        font-weight: bold;
-        background-color: rgb(244, 244, 244);
-    }
+form > table > tr, tr > .title, .content {
+    text-align: center;
+    padding: 1.5rem;
+    font-weight: bold;
+    background-color: rgb(244, 244, 244);
+}
 
-    tr > .button-menu {
-        text-align: center;
-    }
+tr > .button-menu {
+    text-align: center;
+}
 
-    #notice-writer > .button-menu {
-        align-items: center;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        margin: 1.5rem 0 1.5rem 0;
-    }
+form > .button-menu {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 1.5rem 0 1.5rem 0;
+}
 
-    #notice-writer > .button-menu > .send, .cancel {
-        background-color: #FB6161;
-        color: white;
-        border: none;
-        padding: 0.5rem 1rem 0.5rem 1rem;
-        text-decoration: none;
-        font-weight: bold;
-        margin: 0.3rem;
-        border-radius: 0.2rem;
-    }
+form > .button-menu > .send, .cancel {
+    background-color: #FB6161;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0.3rem;
+    border-radius: 0.2rem;
+}
 
-    #notice-writer > .button-menu > .send:hover, .cancel:hover {
-        cursor: pointer;
-        filter: brightness(90%); /* 밝기 조절로 어두운 효과 적용 */
-    }
+form > .button-menu > .send:hover, .cancel:hover {
+    cursor: pointer;
+    filter: brightness(90%); /* 밝기 조절로 어두운 효과 적용 */
 }
 
 
@@ -123,11 +116,12 @@ header > a > img {
     .ck.ck-editor {
         max-width: 600px;
     }
+
     .ck-editor__editable {
         height: 25rem;
     }
 
-    #notice-writer > h1 {
+    form > h1 {
         margin: 0rem 0 2rem 0.1rem;
     }
 
@@ -147,7 +141,7 @@ header > a > img {
         padding: 0.8rem;
     }
 
-    #notice-writer > table > tr, tr > .title, .content {
+    form > table > tr, tr > .title, .content {
         text-align: center;
         padding: 1.5rem;
         font-weight: bold;
@@ -158,7 +152,7 @@ header > a > img {
         text-align: center;
     }
 
-    #notice-writer > .button-menu {
+    form > .button-menu {
         align-items: center;
         display: flex;
         flex-direction: row;
@@ -166,7 +160,7 @@ header > a > img {
         margin: 1.5rem 0 1.5rem 0;
     }
 
-    #notice-writer > .button-menu > .send, .cancel {
+    form > .button-menu > .send, .cancel {
         background-color: #FB6161;
         color: white;
         border: none;
@@ -177,7 +171,7 @@ header > a > img {
         border-radius: 0.2rem;
     }
 
-    #notice-writer > .button-menu > .send:hover, .cancel:hover {
+    form > .button-menu > .send:hover, .cancel:hover {
         cursor: pointer;
         filter: brightness(90%); /* 밝기 조절로 어두운 효과 적용 */
     }
@@ -212,7 +206,7 @@ header > a > img {
         width: 15rem;
     }
 
-    #notice-writer > table > tr, tr > .title, .content {
+    form > table > tr, tr > .title, .content {
         text-align: center;
         padding: 1rem;
         font-weight: bold;
@@ -224,7 +218,7 @@ header > a > img {
         text-align: center;
     }
 
-    #notice-writer > .button-menu {
+    form > .button-menu {
         align-items: center;
         display: flex;
         flex-direction: row;
@@ -236,6 +230,10 @@ header > a > img {
 @media screen and (max-width: 460px) {
     .ck.ck-editor {
         max-width: 280px;
+    }
+
+    h1{
+        font-size: 1.5rem;
     }
 
     .ck-editor__editable {
@@ -260,8 +258,6 @@ header > a > img {
         width: 8rem;
     }
 }
-
-
 
 
 

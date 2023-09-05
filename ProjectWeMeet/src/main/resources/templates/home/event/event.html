@@ -5,8 +5,9 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>이벤트</title>
-    <link rel="stylesheet" th:href="@{/resources/stylesheets/event/event.css}">
-    <link rel="stylesheet" th:href="@{/resources/stylesheets/Common/footerCommon.css}">
+    <link rel="stylesheet" th:href="@{/resources/stylesheets/commonService/commonService.css}">
+    <link rel="stylesheet" th:href="@{/resources/stylesheets/commonService/commonsServicePage.css}">
+    <link rel="stylesheet" th:href="@{/resources/stylesheets/commonFooter/footerCommon.css}">
     <script defer th:src="@{/resources/scripts/common/search.js}"></script>
 </head>
 <body>
@@ -28,13 +29,16 @@
     </div>
 </section>
 
-<section class="event">
+<section class="commonService">
     <h1>이벤트</h1>
     <div>
         <a class="button" href="/eventWriter" th:if="${user != null && user.isAdmin() == true}">작성</a>
         <a class="article-notice" th:each="event: ${event}" th:href="@{eventView(index=${event.getIndex()})}">
             <span class="title" th:text="${event.getTitle}"></span>
             <span class="day" th:text="${#dates.format(event.getCreatedAt(), 'yyyy-MM-dd')}"></span>
+        </a>
+        <a class="article-notice" th:if="${searchResult == 0}">
+            <span class="title"> 검색결과가 존재하지 않습니다</span>
         </a>
     </div>
     <form id="search" method="get">

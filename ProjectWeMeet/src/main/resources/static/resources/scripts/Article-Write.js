@@ -215,7 +215,7 @@ articleForm.onsubmit = e => {
         return;
     } //제목이 비어있을때
 
-    if (!/^[가-힣a-zA-Z\s\d\W]+$/.test(articleForm['title'].value)) {
+    if (!/^[가-힣a-zA-Z\s\d\W]*[가-힣a-zA-Z]+[가-힣a-zA-Z\s\d\W]*$/.test(articleForm['title'].value)) {
         alert('제목을 제대로 입력해주세요');
         articleForm['content'].value = '';
         articleForm['content'].focus();
@@ -238,7 +238,7 @@ articleForm.onsubmit = e => {
     } //게시판 내용이 비어있을때
 
 
-    if (!/^[가-힣a-zA-Z\s\d\W]+$/.test(articleForm['content'].value)) {
+    if (!/^[가-힣a-zA-Z\s\d\W]*[가-힣a-zA-Z]+[가-힣a-zA-Z\s\d\W]*$/.test(articleForm['content'].value)) {
         alert('내용을 제대로 입력해주세요');
         articleForm['content'].value = '';
         articleForm['content'].focus();

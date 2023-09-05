@@ -158,14 +158,6 @@
         LIMIT 1
     </delete>
 
-    <delete id="deleteAnswerByIndex"
-            parameterType="com.bsh.projectwemeet.entities.QnaAnswerEntity">
-        DELETE
-        FROM `wemeet_project`.`qna_answer`
-        WHERE `qna_index` = #{qnaIndex}
-        LIMIT 1
-    </delete>
-
     <update id="updateQnaAnswer"
             parameterType="com.bsh.projectwemeet.entities.QnaEntity">
         UPDATE `wemeet_project`.`qna`

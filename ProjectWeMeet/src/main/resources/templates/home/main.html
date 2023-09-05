@@ -10,7 +10,7 @@
     <link rel="icon" th:href="@{/resources/images/favicon/favicon.png}">
     <link rel="stylesheet" th:href="@{/resources/stylesheets/main/mainMenu.css}">
     <link rel="stylesheet" th:href="@{/resources/stylesheets/main/mainStyle.css}">
-    <link rel="stylesheet" th:href="@{/resources/stylesheets/Common/footerCommon.css}">
+    <link rel="stylesheet" th:href="@{/resources/stylesheets/commonFooter/footerCommon.css}">
     <script defer th:src="@{/resources/scripts/logout.js}"></script>
     <script defer th:src="@{/resources/scripts/slide.js}"></script>
     <script defer th:src="@{/resources/scripts/logout.js}"></script>
@@ -92,10 +92,8 @@
 </div>
 
 <div class="categoryContainer">
-    <div class="_content _small category">
-
+    <div class="category">
         <ul class="grid">
-
             <li class="item">
                 <a class="link" th:href="@{'/article' (p=1,category='')}">
                     <img alt="전체" class="image" th:src="@{/resources/images/testImages/전체.png}">
@@ -159,19 +157,18 @@
 <section class="article-container">
     <h2 class="article-list-header">똑같은 일상의 소소한 변화</h2>
     <div class="article-box">
-        <a th:href="@{article/read(index=${article.getIndex()})}" class="article-list" th:each="article : ${article}">
+        <a class="article-list" th:href="@{article/read(index=${article.getIndex()})}" th:each="article : ${article}">
             <input hidden th:value="${article.getIndex()}" name="index">
             <span class="article-thumbnail">
                 <img class="thumbnail" th:src="@{article/image(index=${article.getIndex()})}">
             </span>
             <span class="article-content-box">
                 <span class="article-tag">
-                            <span class="hashTag" th:if="${article.getHashtag() != null}"
+                    <span class="hashTag" th:if="${article.getHashtag() != null}"
                                   th:text="${article.getHashtag()}"></span>
                     <span class="article-category" th:text="${article.getCategory()}"></span>
                 </span>
                 <span class="article-title" th:text="${article.getTitle()}"></span>
-
                 <span class="article-map">
                     <span class="article-location">
                         <img class="location" th:src="@{/resources/images/articleImages/location.png}">
@@ -187,25 +184,25 @@
                         <span class="map-item" th:text="${article.getAppointmentStartTime().hours >= 12 ? '오후 ' + #dates.format(article.getAppointmentStartTime(), 'hh시 mm분') : '오전 '
                                 + #dates.format(article.getAppointmentStartTime(), 'hh시 mm분')}"></span>
                     </span>
-
                 </span>
                 <span class="article-human">
-                            <span class="Profile-Picture">
+                  <span class="Profile-Picture">
                                 <img class="profile" th:src="@{/article/profiles(index=${article.getIndex()})}">
-                                <img class="profile" onerror="this.style.display='none'" th:src="@{/article/participant/profiles(index=${article.getIndex()})}">
-                                <img class="profile" onerror="this.style.display='none'" th:src="@{/article/participant/profiless(index=${article.getIndex()})}">
+                                <img class="profile" onerror="this.style.display='none'" th:src="@{/article/profile/participant1(index=${article.getIndex()})}">
+                                <img class="profile" onerror="this.style.display='none'" th:src="@{/article/profile/participant2(index=${article.getIndex()})}">
                             </span>
                                 <img class="limit-image" src="/resources/images/category/human.png">
-                      <span class="number">
-                        <span class="map-item" th:text="${article.getParticipation()}"></span>
-                        <span class="map-item">/</span>
-                        <span class="map-item" th:text="${article.getLimitPeople()}"></span>
-                      </span>
-                      </span>
+                  <span class="number">
+                    <span class="map-item" th:text="${article.getParticipation()}"></span>
+                    <span class="map-item">/</span>
+                    <span class="map-item" th:text="${article.getLimitPeople()}"></span>
+                  </span>
+                  </span>
             </span>
         </a>
     </div>
 </section>
+
 <section class="more-button">
     <a href="/article?p=1&category="><p>더보기 ></p></a>
 </section>

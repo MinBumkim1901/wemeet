@@ -6,8 +6,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" th:href="@{/resources/images/favicon/favicon.png}" type="image/x-icon">
-    <link rel="stylesheet" th:href="@{/resources/stylesheets/faq/faqWriter.css}">
-    <link rel="stylesheet" th:href="@{/resources/stylesheets/Common/footerCommon.css}">
+    <link rel="stylesheet" th:href="@{/resources/stylesheets/commonService/commonServiceWriter.css}">
+    <link rel="stylesheet" th:href="@{/resources/stylesheets/commonFooter/footerCommon.css}">
     <script defer th:src="@{/resources/scripts/faq/faqWriter.js}"></script>
     <script th:src="@{/resources/libraries/ckeditor/ckeditor.js}"></script>
     <title>FAQ</title>
@@ -25,7 +25,7 @@
         <tr>
             <td class="title">제목</td>
             <td class="textInput">
-                <input maxlength="20" class="notice-title" type="text" name="title" placeholder="제목을 입력해 주세요.">
+                <input maxlength="30" class="notice-title" type="text" name="title" placeholder="제목을 입력해 주세요.">
             </td>
         </tr>
 

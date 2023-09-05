@@ -130,7 +130,7 @@ public class QnaController {
     @ResponseBody
     public String deleteQnaView(@RequestParam(value = "index") int index) {
         boolean result = this.qnaService.deleteQnaAndAnswer(index);
-       return String.valueOf(result);
+        return String.valueOf(result);
     }
 
 

@@ -295,7 +295,7 @@
                 AND `mypage`.`index`
                 LIMIT 1 )                 AS `thumbnail`
         FROM `wemeet_project`.`articles` AS `article`
-                 LEFT JOIN `wemeet_project`.`mypages` AS `mypage` ON `article`.`email` = `mypage`.`email`
+                 LEFT JOIN `wemeet_project`.`mypage` AS `mypage` ON `article`.`email` = `mypage`.`email`
                  LEFT JOIN `wemeet_project`.`Participants` AS `participant` ON `article`.`index` = `participant`.`ArticleIndex`
         WHERE `article`.`index` = #{index}
         LIMIT 1 ;
@@ -326,7 +326,7 @@
                 WHERE `participantEmail` = `mypage`.`email`
                 LIMIT 1 )                 AS `thumbnail`
         FROM `wemeet_project`.`articles` AS `article`
-                 LEFT JOIN `wemeet_project`.`mypages` AS `mypage` ON `article`.`email` = `mypage`.`email`
+                 LEFT JOIN `wemeet_project`.`mypage` AS `mypage` ON `article`.`email` = `mypage`.`email`
                  LEFT JOIN `wemeet_project`.`Participants` AS `participant` ON `article`.`index` = `participant`.`ArticleIndex`
         WHERE `article`.`index` = #{index}
         LIMIT 1 ;

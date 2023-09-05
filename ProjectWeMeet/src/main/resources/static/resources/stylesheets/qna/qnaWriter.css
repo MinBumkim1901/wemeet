@@ -43,7 +43,7 @@ header > a > img {
     height: 2rem;
 }
 
-#qnaWriter > table {
+form > table {
     border-collapse: collapse;
     border: 1px solid #eaeaea;
 }
@@ -56,7 +56,7 @@ header > a > img {
     border: 1px solid #ccced1;
 }
 
-#qnaWriter > h1 {
+form > h1 {
     margin: 2rem 0 2rem 0.1rem;
 }
 
@@ -88,7 +88,7 @@ tr > .textInput > ul > li > i{
     margin-right: 0.5rem;
 }
 
-#qnaWriter > table > tr, tr > .title {
+form > table > tr, tr > .title {
     text-align: center;
     padding: 1rem;
     font-weight: bold;
@@ -99,7 +99,7 @@ tr > .button-menu {
     text-align: center;
 }
 
-#qnaWriter > .button-menu {
+form > .button-menu {
     align-items: center;
     display: flex;
     flex-direction: row;
@@ -107,7 +107,7 @@ tr > .button-menu {
     margin: 1.5rem 0 1.5rem 0;
 }
 
-#qnaWriter > .button-menu > .send, .cancel {
+form > .button-menu > .send, .cancel {
     background-color: #FB6161;
     color: white;
     border: none;
@@ -118,12 +118,12 @@ tr > .button-menu {
     border-radius: 0.2rem;
 }
 
-#qnaWriter > .button-menu > .send:hover, .cancel:hover {
+form > .button-menu > .send:hover, .cancel:hover {
     cursor: pointer;
     filter: brightness(90%); /* 밝기 조절로 어두운 효과 적용 */
 }
 
-.column{
+#qnaWriterS,#qnaPatchS{
     display: none;
 }
 
@@ -144,7 +144,7 @@ tr > .button-menu {
         border: 1px solid #ccced1;
     }
 
-    #qnaWriter > table > tr > .title{
+    form > table > tr > .title{
         text-align: center;
         padding: 1.5rem;
         font-weight: bold;
@@ -155,7 +155,7 @@ tr > .button-menu {
         text-align: center;
     }
 
-    #qnaWriter > .button-menu {
+    form > .button-menu {
         align-items: center;
         display: flex;
         flex-direction: row;
@@ -163,7 +163,7 @@ tr > .button-menu {
         margin: 1.5rem 0 1.5rem 0;
     }
 
-    #qnaWriter > .button-menu > .send, .cancel {
+    form > .button-menu > .send, .cancel {
         background-color: #FB6161;
         color: white;
         border: none;
@@ -174,7 +174,7 @@ tr > .button-menu {
         border-radius: 0.2rem;
     }
 
-    #notice-writer > .button-menu > .send:hover, .cancel:hover {
+    form > .button-menu > .send:hover, .cancel:hover {
         cursor: pointer;
         filter: brightness(90%); /* 밝기 조절로 어두운 효과 적용 */
     }
@@ -203,7 +203,7 @@ tr > .button-menu {
         padding: 0.5rem;
     }
 
-    #qnaWriter > table > tr, tr > .title {
+    form > table > tr, tr > .title {
         text-align: center;
         padding: 0.8rem;
         font-weight: bold;
@@ -220,12 +220,14 @@ tr > .button-menu {
 }
 
 @media screen and (max-width: 514px) {
-    #qnaWriter{
+    #qnaWriter,#qnaPatch{
         display: none;
     }
-    .column{
+    #qnaWriterS,#qnaPatchS{
         display: block;
     }
+
+
 
     tr > .textInput {
         text-align: center;
@@ -249,7 +251,7 @@ tr > .button-menu {
         border: 1px solid #ccced1;
     }
 
-    #qnaWriter > .button-menu {
+    form > .button-menu {
         align-items: center;
         display: flex;
         flex-direction: row;

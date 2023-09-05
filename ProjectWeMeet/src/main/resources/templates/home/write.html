@@ -12,7 +12,7 @@
     <link rel="stylesheet" th:href="@{/resources/stylesheets/write.css}">
     <link rel="stylesheet" th:href="@{/resources/stylesheets/Article-Write/Article-Write.css}">
     <script type="text/javascript"
-            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ecdfc98a188ee7f356932f3bc0506125&libraries=services"></script>
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=418cdebb0616a0a55d2705ade5b581a9&libraries=services"></script>
     <script th:src="@{/resources/libraries/ckeditor/ckeditor.js}"></script>
     <script defer th:src="@{/resources/scripts/map.js}"></script>
     <script defer th:src="@{/resources/scripts/Article-Write.js}"></script>
@@ -23,7 +23,7 @@
 </head>
 
 <body th:if="${session.user != null}">
-<div class="inner">
+<div class="inner" >
     <h2 class="logo_we_meet">
         <a href="/" class="link">
             <img th:src="@{/resources/images/logoImages/logo-224x48.png}" class="logo"/>
@@ -46,20 +46,23 @@
                             <input type="time" class="time" name="time">
                         </div>
                         <div class="sub_title">참여인원과 카테고리를 설정해주세요</div>
-                            <div class="box_one">
-                                <input type="number" class="limit" name="limit" min="2" placeholder="참여인원">
-                            </div>
-                            <div class="box_two">
-                                <select name="category" class="category">
-                                    <option disabled hidden selected value="">카테고리</option>
-                                    <option value="운동">운동,액티비티</option>
-                                    <option value="푸드">푸드,드링크</option>
-                                    <option value="문화">문화,예술</option>
-                                    <option value="취미">취미,자기개발</option>
-                                    <option value="온라인">온라인</option>
-                                    <option value="여행">여행</option>
-                                </select>
-                            </div>
+
+                        <div class="box_one">
+                            <span class="text"></span>
+                            <input type="number" class="limit" name="limit" min="2">
+                        </div>
+                        <div class="box_two">
+                            <span class="text"></span>
+                            <select name="category" class="category">
+                                <option disabled hidden selected value="">카테고리</option>
+                                <option value="운동">운동,액티비티</option>
+                                <option value="푸드">푸드,드링크</option>
+                                <option value="문화">문화,예술</option>
+                                <option value="취미">취미,자기개발</option>
+                                <option value="온라인">온라인</option>
+                                <option value="여행">여행</option>
+                            </select>
+                        </div>
 
                         <input readonly name="lat"  maxlength="50" placeholder="경도" class="latitude">
                         <input readonly name="lng"  maxlength="50" placeholder="위도" class="longitude">
@@ -93,6 +96,7 @@
         <input type="submit" value="다음" class="_button next">
     </div>
 </div>
+
 
 <form id="Article-Form" style="display: none" >
     <div class="logo-form">

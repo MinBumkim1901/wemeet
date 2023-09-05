@@ -94,13 +94,12 @@ body {
 
 /*화면 전환을 위한 display 값들*/
 .step-1 {
-    /*display: block;*/
-    display: none;
+    display: block;
 
 }
 
 .step-2 {
-    display: block;
+    display: none;
     margin: 0 auto;
 }
 

@@ -113,7 +113,7 @@ body {
 }
 
 
-tr > .title{
+#main > div > table > tbody > tr > .title{
     width: 400px;
     height: 40px;
    text-align: left;
@@ -163,25 +163,20 @@ tr > .title{
   cursor: pointer;
 }
 
-.search-box {
+.search > .search-box {
     align-items: center;
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
-.search-box > .search {
-    margin: 1rem 0 2rem 0;
-}
-
-.search-box  > .select {
-    width: 60px;
+.search > .search-box  > .select {
     height: 33px;
     border-radius: 0.2rem;
     margin: 0.3rem;
 }
 
-.search-box > .input {
+.search > .search-box > .input {
     width: 180px;
     height: 28px;
     border: 1px solid #ddd;
@@ -189,11 +184,11 @@ tr > .title{
     border-radius: 0.3rem;
 }
 
-.search-box > .input::placeholder {
+.search > .search-box > .input::placeholder {
     color: #999; /* 원하는 색상으로 변경해주세요 */
 }
 
-.search-box > .button {
+.search > .search-box > .button {
     background-color: #FB6161;
     border: none;
     width: 56px;
@@ -205,11 +200,12 @@ tr > .title{
 
 }
 
-.search-box > .search > .button:hover {
+.search > .search-box > .button:hover {
     cursor: pointer;
+    filter: grayscale(20%); /* 회색 필터 적용 */
 }
 
-.pageContainer {
+.search > .pageContainer {
     list-style-type: none;
     align-items: center;
     display: flex;
@@ -218,17 +214,17 @@ tr > .title{
     margin: 1rem;
 }
 
-.pageContainer > .page {
+.search > .pageContainer > .page {
     user-select: none;
 }
 
-.pageContainer > .page > .link {
+.search > .pageContainer > .page > .link {
     align-items: center;
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    padding: 0.5rem 0.8rem 0.5rem 0.8rem;
+    padding: 0.5rem;
     text-decoration: none;
     background-color: #FB6161;
     color: white;
@@ -237,7 +233,7 @@ tr > .title{
     font-weight: 450;
 }
 
-.pageContainer > .page > .link:hover {
+.search > .pageContainer > .page > .link:hover {
     filter: grayscale(20%); /* 회색 필터 적용 */
 }
 
@@ -292,11 +288,11 @@ tr > .title{
         font-size: 0.8rem;
     }
 
-    .search-box  > .input {
+    .search >.search-box  > .input {
         width: 130px;
     }
 
-    .pageContainer > .page > .link {
+    .search >.pageContainer > .page > .link {
         padding: 0.4rem;
     }
 }

@@ -39,16 +39,15 @@ answerViewDeleteButton.addEventListener('click', e => {
                 const confirmResult = confirm('삭제 하시겠습니까?');
                 if (confirmResult === true) {
                     if (responseText === 'true') {
-                        window.location.replace('/qna');
-                    } else {
-                        alert('알 수 없는 이유로 삭제하지 못하였습니다.\n\n이미 삭제된 공지사항일 수도 있습니다.');
+                        window.location.href = '/qna';
                     }
-                } else if (confirmResult === false) {
+                }
+                else if (confirmResult === false) {
                     alert('삭제를 취소합니다');
                     return;
                 }
             } else {
-                alert('관리자만 삭제할수 있습니다.');
+                alert('이미 삭제되었습니다.');
             }
         }
     };

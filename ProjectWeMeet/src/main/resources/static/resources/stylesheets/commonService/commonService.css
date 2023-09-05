@@ -54,6 +54,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
+
 }
 
 .layout > .header_wrap > .logo > a {
@@ -77,21 +78,21 @@ body {
     margin-right: 0.5rem;
 }
 
-.faq {
-    width: 46.125rem;
+.commonService {
+    width: 42.125rem;
     margin-top: 3rem;
-    white-space: nowrap;
+    height: 800px;
 }
 
-.faq > div {
+.commonService > div {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
 }
 
-.faq > div > .button {
+.commonService > div > .button {
     padding: 0.5rem;
     font-size: 1rem;
     align-self: flex-end;
@@ -101,13 +102,7 @@ body {
     border-radius: 0.3rem;
 }
 
-.faq > div > .button:hover {
-    cursor: pointer;
-    filter: brightness(90%); /* 밝기 조절로 어두운 효과 적용 */
-}
-
-
-.faq  > div > .article-notice {
+.commonService  > div > .article-notice {
     padding: 0.5rem;
     font-size: 1.2rem;
     border-bottom: 1px solid #bdbdbd;
@@ -116,128 +111,45 @@ body {
     justify-content: center;
 }
 
-.faq  > div > .article-notice:hover {
+.commonService  > div > .article-notice:hover {
     background-color: #f4f3f1;
 }
 
-.faq > div > .article-notice > .title {
+.commonService > div > .article-notice > .title {
     color: black;
     font-size: 1.3rem;
 }
 
-.faq  > div > a > .title {
+.commonService  > div > a > .title {
     color: #bdbdbd;
     font-size: 1rem;
 }
 
 /*공지사항의 제목*/
-.faq  > div > a > .day {
+.commonService  > div > a > .day {
     margin: 0.5rem 0 0.5rem 0;
     color: #bdbdbd;
     font-size: 1rem;
 }
 
-#search{
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
 
-#pageContainer {
-    list-style-type: none;
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-#pageContainer > .page {
-    user-select: none;
-}
-
-#pageContainer > .page > .link {
-    height: 2.25rem;
-    align-items: center;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    padding: 0 0.55rem;
-    text-decoration: none;
-    background-color: #FB6161;
-    color: white;
-    margin: 0.09rem;
-    border-radius: 0.3rem;
-    font-weight: 450;
-}
-
-#pageContainer > .page > .link:hover {
-    filter: brightness(90%); /* 밝기 조절로 어두운 효과 적용 */
-}
-
-.search-box {
-    margin-bottom: 3rem;
-}
-
-.search-box > .input {
-    width: 130px;
-    height: 28px;
-    border: 1px solid #ddd;
-    padding: 0.2rem;
-    border-radius: 0.3rem;
-}
-
-.search-box > .select {
-    border: 1px solid #ddd;
-    width: 80px;
-    height: 33px;
-    border-radius: 0.2rem;
-}
-
-.search-box > .input::placeholder {
-    color: #999; /* 원하는 색상으로 변경해주세요 */
-}
-
-.search-box >  .button {
-    background-color: #FB6161;
-    border: none;
-    padding: 0.5rem;
-    border-radius: 0.2rem;
-    color: #fff;
-    font-weight: 500;
-}
-
-.search-box >  .button:hover {
-    cursor: pointer;
-    filter: brightness(90%); /* 밝기 조절로 어두운 효과 적용 */
-}
-
-/*--------------------------------------------------------------------------------*/
-
+/*---------------------------------------------------------------------------------------------------------------------*/
 
 @media screen and (max-width: 920px){
-    .faq {
-        width: 85%;
+    .commonService {
+        width: 76.46%;
     }
-    /*.faq > div > .article-notice > .title {*/
-    /*    color: black;*/
-    /*    font-size: 1rem;*/
-    /*}*/
 }
 
-/*@media screen and (max-width: 590px) {*/
-/*    .faq > div > .article-notice > .title {*/
-/*        color: black;*/
-/*        font-size: 1rem;*/
-/*    }*/
-/*}*/
-
-@media screen and (max-width: 470px) {
-
-    .faq{
-        margin-top: 1.5rem;
+@media screen and (max-width: 390px) {
+    textarea::placeholder {
+        font-size: 0.8rem;
     }
+
+    .layout > .header_wrap >.register > .login{
+        font-size: 1.1rem;
+    }
+
 
     .layout > .header_wrap > .logo > a > .icon {
         margin: 0.2rem 0.6rem 0rem 0.6rem;
@@ -249,23 +161,18 @@ body {
         font-size: 1.3rem;
     }
 
-
-    .layout > .header_wrap >.register > .login{
-        font-size: 1.1rem;
+    .commonService{
+        margin-top: 1.5rem;
     }
 
-    .faq > div > .article-notice > .title {
-        color: black;
-        font-size: 0.75rem;
-    }
-
-    .faq  > div > a > .day {
-        font-size: 0.7rem;
-    }
-
-    .faq > div > .button {
+    .commonService > div > .button{
         padding: 0.3rem;
         font-size: 0.9rem;
+    }
+
+    .commonService > div > .article-notice > .title {
+        color: black;
+        font-size: 1rem;
     }
 
 }

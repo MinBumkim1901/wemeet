@@ -497,6 +497,10 @@ registerForm['birth'].addEventListener('focusout', () => {
         return;
     }
 });
+
+
+
+
 registerForm['email'].addEventListener('focusout', () => {
     registerForm.emailWarning.hide();
     if (registerForm['email'].value === '') {

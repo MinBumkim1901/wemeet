@@ -6,8 +6,9 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" th:href="@{/resources/images/favicon/favicon.png}">
-    <link rel="stylesheet" th:href="@{/resources/stylesheets/notice/notice.css}">
-    <link rel="stylesheet" th:href="@{/resources/stylesheets/Common/footerCommon.css}">
+    <link rel="stylesheet" th:href="@{/resources/stylesheets/commonService/commonService.css}">
+    <link rel="stylesheet" th:href="@{/resources/stylesheets/commonService/commonsServicePage.css}">
+    <link rel="stylesheet" th:href="@{/resources/stylesheets/commonFooter/footerCommon.css}">
     <script defer th:src="@{/resources/scripts/common/search.js}"></script>
     <title>공지사항</title>
 </head>
@@ -31,13 +32,16 @@
     </div>
 </section>
 
-<div class="notice-main">
+<div class="commonService">
     <h1>공지사항</h1>
     <div>
         <a class="button" href="/noticeWriter" th:if="${user != null && user.isAdmin() == true}">작성</a>
         <a class="article-notice" th:each="notice: ${notice}" th:href="@{noticeView(index=${notice.getIndex()})}">
             <span class="title" th:text="${notice.getTitle}"></span>
             <span class="day" th:text="${#dates.format(notice.getCreatedAt(), 'yyyy-MM-dd')}"></span>
+        </a>
+        <a class="article-notice" th:if="${searchResult == 0}">
+            <span class="title"> 검색결과가 존재하지 않습니다</span>
         </a>
     </div>
     <form id="search" method="get">

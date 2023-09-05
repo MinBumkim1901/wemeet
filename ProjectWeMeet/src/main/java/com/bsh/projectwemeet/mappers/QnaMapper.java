@@ -49,7 +49,6 @@ public interface QnaMapper {
 
     int deleteQnaByIndex(@Param(value = "index")int index);
 
-    int deleteAnswerByIndex(@Param(value = "qnaIndex")int qnaIndex);
 
     int updateQnaAnswer(QnaEntity qna);
 

@@ -5,8 +5,9 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="icon" th:href="@{/resources/images/favicon/favicon.png}">
-    <link rel="stylesheet" th:href="@{/resources/stylesheets/faq/faq.css}">
-    <link rel="stylesheet" th:href="@{/resources/stylesheets/Common/footerCommon.css}">
+    <link rel="stylesheet" th:href="@{/resources/stylesheets/commonService/commonService.css}">
+    <link rel="stylesheet" th:href="@{/resources/stylesheets/commonService/commonsServicePage.css}">
+    <link rel="stylesheet" th:href="@{/resources/stylesheets/commonFooter/footerCommon.css}">
     <script defer th:src="@{/resources/scripts/common/search.js}"></script>
     <title>자주묻는 질문</title>
 </head>
@@ -29,7 +30,7 @@
     </div>
 </section>
 
-<section class="faq">
+<section class="commonService">
         <h1>FAQ</h1>
         <div>
             <a class="button" href="/faqWriter" th:if="${user != null && user.isAdmin() == true}">작성</a>
@@ -37,32 +38,36 @@
                 <span class="title" th:text="${faq.getTitle}"></span>
                 <span class="day" th:text="${#dates.format(faq.getCreatedAt(), 'yyyy-MM-dd')}"></span>
             </a>
+            <a class="article-notice" th:if="${searchResult == 0}">
+                <span class="title"> 검색결과가 존재하지 않습니다</span>
+            </a>
         </div>
+    <form id="search" method="get">
+        <ul id="pageContainer" th:if="${searchResult > 0}">
+            <li class="page" th:if="${pagingModel.requestPage > 1}">
+                <a class="link" th:href="@{'/faq' (p = ${1}, q = ${searchQuery})}">처음</a>
+            </li>
+            <li class="page" th:if="${pagingModel.requestPage > 1}">
+                <a class="link" th:href="@{'/faq' (p = ${pagingModel.requestPage - 1}, q = ${searchQuery})}">이전</a>
+            </li>
+            <li class="page" th:each="page : ${#numbers.sequence(pagingModel.displayStartPage, pagingModel.displayEndPage)}">
+                <a class="link" th:href="@{'/faq' (p = ${page}, q = ${searchQuery})}" th:text="${page}"></a>
+            </li>
+            <li class="page" th:if="${pagingModel.requestPage < pagingModel.maxPage}">
+                <a class="link" th:href="@{'/faq' (p = ${pagingModel.requestPage + 1}, q = ${searchQuery})}">다음</a>
+            </li>
+            <li class="page" th:if="${pagingModel.requestPage < pagingModel.maxPage}">
+                <a class="link" th:href="@{'/faq' (p = ${pagingModel.maxPage}, q = ${searchQuery})}">마지막</a>
+            </li>
+        </ul>
+        <section class="search-box">
+            <input class="input"  name="q" placeholder="제목을 입력해주세요" type="text" maxlength="15">
+            <input class="button" type="submit" value="검색">
+        </section>
+    </form>
 </section>
 
-<form id="search" method="get">
-    <ul id="pageContainer" th:if="${searchResult > 0}">
-        <li class="page" th:if="${pagingModel.requestPage > 1}">
-            <a class="link" th:href="@{'/faq' (p = ${1}, q = ${searchQuery})}">처음</a>
-        </li>
-        <li class="page" th:if="${pagingModel.requestPage > 1}">
-            <a class="link" th:href="@{'/faq' (p = ${pagingModel.requestPage - 1}, q = ${searchQuery})}">이전</a>
-        </li>
-        <li class="page" th:each="page : ${#numbers.sequence(pagingModel.displayStartPage, pagingModel.displayEndPage)}">
-            <a class="link" th:href="@{'/faq' (p = ${page}, q = ${searchQuery})}" th:text="${page}"></a>
-        </li>
-        <li class="page" th:if="${pagingModel.requestPage < pagingModel.maxPage}">
-            <a class="link" th:href="@{'/faq' (p = ${pagingModel.requestPage + 1}, q = ${searchQuery})}">다음</a>
-        </li>
-        <li class="page" th:if="${pagingModel.requestPage < pagingModel.maxPage}">
-            <a class="link" th:href="@{'/faq' (p = ${pagingModel.maxPage}, q = ${searchQuery})}">마지막</a>
-        </li>
-    </ul>
-    <section class="search-box">
-        <input class="input"  name="q" placeholder="제목을 입력해주세요" type="text" maxlength="15">
-        <input class="button" type="submit" value="검색">
-    </section>
-</form>
+
 
 
 <footer id="footer">

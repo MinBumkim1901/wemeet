@@ -16,7 +16,7 @@
     <script th:src="@{/resources/libraries/ckeditor/ckeditor.js}"></script>
     <script defer th:src="@{/resources/scripts/map.js}"></script>
     <script type="text/javascript"
-            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ecdfc98a188ee7f356932f3bc0506125&libraries=services"></script>
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=418cdebb0616a0a55d2705ade5b581a9&libraries=services"></script>
 </head>
 <body>
 <div class="inner">
@@ -42,7 +42,6 @@
                             <input type="time" class="time" name="time" th:value="${#dates.format(article.getAppointmentStartTime(), 'HH:mm:ss')}">
                         </div>
                         <div class="sub_title">참여인원과 카테고리를 설정해주세요</div>
-                        <div class="etc">
                             <div class="box_one">
                                 <input type="number" class="limit" name="limit" min="2" th:value="${article.getLimitPeople()}">
                             </div>
@@ -61,7 +60,6 @@
                         <input readonly name="lng"  maxlength="50" placeholder="위도" class="longitude" th:value="${article.getLongitude()}">
 
                     </div>
-                </div>
             </main>
         </form>
         <div class="mapBox">

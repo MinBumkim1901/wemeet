@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Qna</title>
     <link rel="stylesheet" th:href="@{/resources/stylesheets/qna/qna.css}">
-    <link rel="stylesheet" th:href="@{/resources/stylesheets/Common/footerCommon.css}">
+    <link rel="icon" th:href="@{/resources/images/favicon/favicon.png}">
+    <link rel="stylesheet" th:href="@{/resources/stylesheets/commonFooter/footerCommon.css}">
     <script rel="stylesheet" th:src="@{/resources/scripts/qna/qna.js}"></script>
     <script th:if="${session.user == null && searchResult == 0}">
         alert('로그인부터 해주세요');
@@ -49,33 +50,20 @@
             </thead>
             <tbody>
 
-            <tr th:if="${session.user.isAdmin() == false && searchQuery=='' && searchCriterion == '' && searchResult == 0}">
+            <tr th:if="${searchQuery=='' && searchCriterion == '' && searchResult == 0}">
                 <td></td>
                 <td>문의가 등록되지 않았습니다</td>
                 <td></td>
                 <td></td>
             </tr>
 
-            <tr th:if="${session.user.isAdmin() == false && searchCriterion == 'title' && searchQuery!=null && searchResult == 0}">
+            <tr th:if="${searchCriterion == 'title' && searchQuery!=null && searchResult == 0}">
                 <td></td>
                 <td>검색결과가 존재하지 않습니다</td>
                 <td></td>
                 <td></td>
             </tr>
 
-            <tr th:if="${session.user.isAdmin() == true && searchQuery=='' && searchCriterion == '' && searchResult == 0}">
-                <td></td>
-                <td>문의가 등록되지 않았습니다</td>
-                <td></td>
-                <td></td>
-            </tr>
-
-            <tr th:if="${session.user.isAdmin() == true && searchCriterion == 'title' && searchQuery!=null && searchResult == 0}">
-                <td></td>
-                <td>검색결과가 존재하지 않습니다</td>
-                <td></td>
-                <td></td>
-            </tr>
 
 
             <tr th:if="${session.user.isAdmin() == false}" th:each="qna :${qna}">

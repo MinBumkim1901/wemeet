@@ -9,13 +9,18 @@
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css}"/>
     <link rel="stylesheet" th:href="@{/resources/stylesheets/profile/profile.css}">
+    <link rel="icon" th:href="@{/resources/images/favicon/favicon.png}">
     <link rel="stylesheet" th:href="@{/resources/stylesheets/profile/profile-Responsive.css}">
     <link rel="stylesheet" th:href="@{/resources/stylesheets/profile/profileCommon.css}">
     <script defer th:src="@{/resources/scripts/profile.js}"></script>
     <script defer th:src="@{/resources/scripts/common.js}"></script>
+    <script th:if="${profile.getNickname() == null}">
+        alert('탈퇴한 유저의 프로필입니다');
+        location.href = '/';
+    </script>
 </head>
 <body>
-<div class="main">
+<div class="main" th:if="${profile.getNickname() != null}">
     <a href="/"><img class="logo" src="/resources/images/logoImages/bulletinLogo-244x48.png" alt="로고"></a>
 </div>
 
@@ -43,7 +48,6 @@
         </div>
         <label class="profile_file" rel="profilePreview">
             <label for="change_profile" class="change">바꾸기</label>
-            <!--                    <input hidden="hidden" type="file" id="profile" accept="image/*" name="profile">-->
             <input type="file" id="change_profile" class="change_profile" accept="image/*" name="change_profile">
             <input type="button" name="deleteThumbnail" class="profileDelete" value="삭제">
         </label>

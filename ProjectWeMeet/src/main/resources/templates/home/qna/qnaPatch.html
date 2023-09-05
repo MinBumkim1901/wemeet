@@ -7,8 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Qna 작성</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-    <link rel="stylesheet" th:href="@{/resources/stylesheets/qna/qnaPatch.css}">
-    <link rel="stylesheet" th:href="@{/resources/stylesheets/Common/footerCommon.css}">
+    <link rel="stylesheet" th:href="@{/resources/stylesheets/qna/qnaWriter.css}">
+    <link rel="icon" th:href="@{/resources/images/favicon/favicon.png}">
+    <link rel="stylesheet" th:href="@{/resources/stylesheets/commonFooter/footerCommon.css}">
     <script defer th:src="@{/resources/scripts/qna/qnaPatch.js}"></script>
 </head>
 <body>
@@ -73,6 +74,14 @@
             </td>
         </tr>
     </table>
+    <div class="button-menu">
+        <input class="send" type="submit" value="수정" rel="patch" th:data-index="${article.getIndex()}">
+        <button class="cancel"><a href="/qna">취소</a></button>
+    </div>
+</form>
+
+<form id="qnaPatchS" >
+    <h1>1대1 문의작성</h1>
     <table border="1" class="column">
         <tr>
             <td class="title">문의 유형</td>
@@ -81,8 +90,8 @@
             <td class="textInput">
                 <select class="qnaType" name="qna_type">
                     <option disabled hidden selected value="">선택해주세요</option>
-                    <option value="계정 관련">계정 관련</option>
-                    <option value="서비스 관련">서비스 관련</option>
+                    <option value="계정 관련" th:selected="${article.getQna_type().equals('계정 관련')}">계정 관련</option>
+                    <option value="서비스 관련" th:selected="${article.getQna_type().equals('서비스 관련')}">서비스 관련</option>
                 </select>
             </td>
         </tr>
@@ -99,7 +108,8 @@
         </tr>
         <tr>
             <td class="textInput">
-                <input maxlength="20" class="InputCommon" type="text" name="title" placeholder="제목을 입력해 주세요.">
+                <input maxlength="20" class="InputCommon" type="text" name="title"
+                       th:value="${article.getTitle()}">
             </td>
         </tr>
         <tr>
@@ -107,7 +117,7 @@
         </tr>
         <tr>
             <td class="textInput">
-                <textarea name="content" class="qna-main" placeholder="문의유형을 선택후 문의내용을 작성해주세요."></textarea>
+                <textarea name="content" class="qna-main" th:text="${article.getContent()}"></textarea>
             </td>
         </tr>
         <tr>
@@ -142,6 +152,7 @@
         <button class="cancel"><a href="/qna">취소</a></button>
     </div>
 </form>
+
 
 <footer id="footer">
     <div class="wrap">

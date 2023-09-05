@@ -101,7 +101,7 @@ public class QnaService {
     }
 
     public boolean deleteQnaAndAnswer(int index) {
-        return this.qnaMapper.deleteQnaByIndex(index) > 0 && this.qnaMapper.deleteAnswerByIndex(index) > 0;
+        return this.qnaMapper.deleteQnaByIndex(index) > 0;
     }
 
 
