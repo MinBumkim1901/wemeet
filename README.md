@@ -64,4 +64,4 @@
 
 
 ### 🔗 배포 링크
-<a href="https://wemeet.minbumkim.com/">we-meet 웹 페이지</a>
+<a href="https://wemeet.minbumkim.com/" target="_blank">we-meet 웹 페이지</a>
