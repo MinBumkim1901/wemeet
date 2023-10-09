@@ -26,7 +26,6 @@
   - 로그인
   - 계정 찾기/재설정
   - 마이프로필 관련 기능
-  - 게시글 관련 기능
   - 게시글의 리뷰(별점) 평가 기능
   - 문의사항 관련 작성 기능
   - 게시글 작성 및 수정
@@ -65,4 +64,4 @@
 
 
 ### 🔗 배포 링크
-<a href="www.wemeet.minbumkim.com">we-meet 웹 페이지</a>
+<a href="https://wemeet.minbumkim.com/">we-meet 웹 페이지</a>
