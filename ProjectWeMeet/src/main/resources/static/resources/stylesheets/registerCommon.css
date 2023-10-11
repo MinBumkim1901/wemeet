@@ -125,14 +125,15 @@ h1 {
     margin: 0.5rem 0 0.5rem 0;
 
     overflow: hidden;
+    visibility: hidden;
     transition-duration: 500ms;
-    transition-property: max-height;
+    transition-property: visibility;
     transition-timing-function: ease;
 
 }
 
 .warning.visible {
-    max-height: 2rem;
+    visibility: visible;
 }
 
 .warning.green{
