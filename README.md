@@ -52,5 +52,5 @@
 ## ✨ DB 스키마 구조
 <img width="450" height="400" src="./ProjectWeMeet/src/main/resources/static/resources/images/ReadMe/schema.png">
 
-### 🔗 배포 링크
+## 🔗 배포 링크
 <a href="https://wemeet.minbumkim.com/" target="_blank">we-meet 웹 페이지</a>
