@@ -50,7 +50,7 @@
     - 관리자는 필요한 경우 회원을 삭제할 수 있습니다. 이를 통해 비활성 계정을 정리할 수 있습니다.
 
 ## ✨ DB 스키마 구조
-[ReadMe](ProjectWeMeet%2Fsrc%2Fmain%2Fresources%2Fstatic%2Fresources%2Fimages%2FReadMe)
+<img width="500" height="400" src="./ProjectWeMeet/src/main/resources/static/resources/images/ReadMe/schema.png">
 
 ### 🔗 배포 링크
 <a href="https://wemeet.minbumkim.com/" target="_blank">we-meet 웹 페이지</a>
