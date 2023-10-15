@@ -178,21 +178,12 @@ public class ProfileService {
                 : VerifyRegisterContactCodeResult.FAILURE;
     }
 
+    //닉네임 변경
     public ModifyPasswordResult resetNickname(String nickname, UserEntity user, HttpSession session,
                                               ProfileEntity profile) {
-//        if (!(session.getAttribute("user") instanceof UserEntity)) {
-//            return ModifyPasswordResult.FAILURE;
-//        }
-//        UserEntity signedUser = (UserEntity) session.getAttribute("user");
-//
-//        if (nickname.equals(signedUser.getNickname())) {
-//            return ModifyPasswordResult.FAILURE_PASSWORD_MISMATCH;
-//        }
-
         user.setNickname(nickname);
-        profile.setNickname(nickname);
 
-        return this.profileMapper.updateUserNickname(user) > 0 && this.profileMapper.updatePageNickname(profile) > 0
+        return this.profileMapper.updateUserNickname(user) > 0
                 ? ModifyPasswordResult.SUCCESS
                 : ModifyPasswordResult.FAILURE;
     }

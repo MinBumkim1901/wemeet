@@ -226,14 +226,6 @@
         LIMIT 1
     </update>
 
-    <update id="updatePageNickname"
-            parameterType="com.bsh.projectwemeet.entities.ProfileEntity">
-        UPDATE `wemeet_project`.`mypage`
-        SET `nickname` = #{nickname}
-        WHERE `email` = #{email}
-        LIMIT 1
-    </update>
-
     <update id="updateContact"
     parameterType="com.bsh.projectwemeet.entities.UserEntity">
         UPDATE `wemeet_project`.`users`
